@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&display=swap');
+
+// 1. Your custom variables and variable overwrites.
+// Font
+$global-font-family: 'Archivo',
+sans-serif;
+
+$global-font-size: 16px !default;
+$global-line-height: 1.5 !default; // 24px
+
+$global-xxlarge-font-size: 2.625rem !default; // 42px
+$global-xlarge-font-size: 2rem !default; // 32px
+$global-large-font-size: 1.5rem !default; // 24px
+$global-medium-font-size: 1.25rem !default; // 20px
+$global-small-font-size: 0.75rem !default; // 14px
+
+// Color
+$global-color: #000 !default;
+$global-emphasis-color: #5243c2;
+$global-muted-color: #999 !default;
+$global-link-color: #1e87f0 !default;
+$global-link-hover-color: #0f6ecd !default;
+
+// BG Color
+$global-background: #fff !default;
+
+$global-muted-background: #ebf5ff;
+$global-primary-background: #5243c2;
+$global-secondary-background: #1d1467;
+
+$global-success-background: #32d296 !default;
+$global-warning-background: #faa05a !default;
+$global-danger-background: #f0506e !default;
+
+//Shadow
+$global-small-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !default;
+$global-medium-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$global-large-box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16) !default;
+$global-xlarge-box-shadow: 0 28px 50px rgba(0, 0, 0, 0.16) !default;
+
+// 2. Import default variables and available mixins.
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// 3. Your custom mixin overwrites.
+@mixin hook-card() {
+    color: #000;
+}
+
+// 4. Import UIkit.
+@import "uikit/src/scss/uikit-theme.scss";
+
+// Other general styles
+html {
+    background: $global-muted-background;
+}
+
+.uk-card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.uk-pill {
+    padding: 0.25rem 0.5rem;
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    text-align: left;
+    border-radius: 6px;
+}
