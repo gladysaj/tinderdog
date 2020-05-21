@@ -57,7 +57,7 @@ html {
 }
 
 .uk-card {
-    border-radius: 8px;
+    border-radius: 24px;
     overflow: hidden;
 }
 
@@ -68,4 +68,21 @@ html {
     margin: 0;
     text-align: left;
     border-radius: 6px;
+}
+
+.bg-img {
+    z-index: 0;
+}
+
+.uk-card-body {
+    position: relative;
+    z-index: 9999;
+}
+
+.uk-margin-xxlarge-top {
+    margin-top: 15rem;
+}
+
+.uk-overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 70%);
 }
