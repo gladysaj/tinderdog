@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 class FloatingAction extends Component {
     render() {
         return(
-            // WIP
-            <button class="uk-button uk-button-default uk-button-large">Large button</button>
+            <button class="uk-button uk-button-default floating-action" type="button"><span uk-icon={"icon:" + this.props.icon}></span></button>
         )
     }
 }
