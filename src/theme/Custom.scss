@@ -39,6 +39,9 @@ $global-medium-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 $global-large-box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16) !default;
 $global-xlarge-box-shadow: 0 28px 50px rgba(0, 0, 0, 0.16) !default;
 
+//Borders
+$global-border: #cacaee !default;
+
 // 2. Import default variables and available mixins.
 @import "uikit/src/scss/variables-theme.scss";
 @import "uikit/src/scss/mixins-theme.scss";
@@ -56,11 +59,35 @@ html {
     background: $global-muted-background;
 }
 
+// Utility
+.uk-margin-xxlarge-top {
+    margin-top: 15rem;
+}
+
+.bg-img {
+    z-index: 0;
+}
+
+.uk-overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 70%);
+}
+
+// Card
 .uk-card {
     border-radius: 24px;
     overflow: hidden;
 }
 
+.uk-card-body {
+    position: relative;
+    z-index: 997;
+}
+
+.match-card .floating-group .floating-action:first-child .uk-icon svg path {
+    stroke: $global-danger-background;
+}
+
+// Pill
 .uk-pill {
     padding: 0.25rem 0.5rem;
     display: inline-block;
@@ -70,19 +97,32 @@ html {
     border-radius: 6px;
 }
 
-.bg-img {
-    z-index: 0;
+.uk-pill:nth-child(2) {
+    margin-left: 0.5rem;
 }
 
-.uk-card-body {
+// Button
+.uk-button {
+    padding: 0.85rem 1.5rem;
+}
+
+.floating-group {
+    margin-top: -11%;
+    z-index: 9998;
+}
+
+.floating-action {
     position: relative;
-    z-index: 9999;
+    border-radius: 50%;
+    background-color: #FFF;
+    box-shadow: $global-xlarge-box-shadow;
+    margin: 0 1.5rem;
 }
 
-.uk-margin-xxlarge-top {
-    margin-top: 15rem;
+.floating-action:hover {
+    background-color: #fff;
 }
 
-.uk-overlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 70%);
+.floating-action .uk-icon svg path {
+    fill: $global-primary-background;
 }
