@@ -12,6 +12,7 @@ $global-xxlarge-font-size: 2.625rem !default; // 42px
 $global-xlarge-font-size: 2rem !default; // 32px
 $global-large-font-size: 1.5rem !default; // 24px
 $global-medium-font-size: 1.25rem !default; // 20px
+$global-xmedium-font-size: 1.125rem; // 20px
 $global-small-font-size: 0.75rem !default; // 14px
 
 // Color
@@ -87,6 +88,10 @@ html {
     stroke: $global-danger-background;
 }
 
+.card-container {
+    position: relative;
+}
+
 // Pill
 .uk-pill {
     padding: 0.25rem 0.5rem;
@@ -104,10 +109,18 @@ html {
 // Button
 .uk-button {
     padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    color: $global-secondary-background;
+    font-size: $global-xmedium-font-size;
+    text-transform: none;
 }
 
 .floating-group {
-    margin-top: -11%;
+    // position: absolute;
+    // left: 0;
+    // right: 0;
+    bottom: -24px;
     z-index: 9998;
 }
 
