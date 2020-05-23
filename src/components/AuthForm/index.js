@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-// import Login from "./Login";
-// import Signup from "./Signup";
 import { Link } from "react-router-dom";
-import { login, signup } from "../../services/authServices";
+import { login } from "../../services/authServices";
+import { signup } from "../../services/authServices";
 import UIkit from "uikit";
 
 class AuthForm extends Component {
@@ -11,17 +10,20 @@ class AuthForm extends Component {
   };
 
   handleChange = (e) => {
-    let { user } = this.state;
+    let { user } = this.state; //Sacamos al user del state para tener un codigo mas limpio
+    //Reasignamos a user y lo ponemos igual a todo lo que ya haya en user ( ...user ) mas lo
+    //que nos vaya poniendo el usuario en el input (e.target.name), name puede ser el email, password, etc
     user = { ...user, [e.target.name]: e.target.value };
-    this.setState({ user });
+    this.setState({ user }); //ahora actualizamos el estado con esta nueva informacion
   };
 
+  //esta funcion es para poder crear un nuevo usuario o poder logearme
   handleSubmit = (e) => {
-    e.preventDefault();
-    const isLogin = this.props.location.pathname === "/login";
-    const { user: credentials } = this.state;
-    const action = isLogin ? login : signup;
-    action(credentials)
+    e.preventDefault(); //evita que mi navegador se refresque
+    const isLogin = this.props.location.pathname === "/login"; //para ayudarme a sabe que proceso se esta haciendo
+    const { user } = this.state;
+    const action = isLogin ? login : signup; //va a determinar si ejecuto el servicio de login o el servicio de signup
+    action(user)
       .then((res) => {
         const { user } = res.data;
         localStorage.setItem("user", JSON.stringify(user));
@@ -84,15 +86,18 @@ class AuthForm extends Component {
                   </div>
                 </div>
               </div>
-              <div className="uk-text-meta">
-                <span>You have not yet registered? </span>
-                <Link className="uk-text-primary" to="/signup">
-                  Create an account
-                </Link>
-              </div>
-
-              <button className="uk-button uk-button-primary">Login</button>
-            </form>{" "}
+              {isLogin ? (
+                <div className="uk-text-meta">
+                  Aún no tienes cuenta?{" "}
+                  <Link className="uk-text-primary" to="/signup">
+                    Crear cuenta
+                  </Link>
+                </div>
+              ) : null}
+              <button className="uk-button uk-button-primary">
+                {isLogin ? "Login" : "Signup"}
+              </button>
+            </form>
           </div>
         </div>
       </section>
@@ -101,3 +106,4 @@ class AuthForm extends Component {
 }
 
 export default AuthForm;
+
