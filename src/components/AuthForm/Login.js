@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { login } from "../../services/authServices";
+import UIkit from "uikit";
 
 class Login extends Component {
   state = {
@@ -10,8 +12,27 @@ class Login extends Component {
     let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
     this.setState({ user });
-    console.log(this.state.user);
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { user: credentials } = this.state;
+    const action = login;
+    action(credentials)
+      .then((res) => {
+        const { user } = res.data;
+        localStorage.setItem("user", JSON.stringify(user));
+      })
+      .catch((err) => {
+        UIkit.notification({
+          message: `<span uk-icon='icon: close'></span> ${err.response.data.msg}`,
+          status: "danger",
+          pos: "top-right",
+        });
+      });
+  };
+
+  
   render() {
     return (
       <form
