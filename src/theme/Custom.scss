@@ -18,7 +18,7 @@ $global-small-font-size: 0.75rem !default; // 14px
 // Color
 $global-color: #000 !default;
 $global-emphasis-color: #5243c2;
-$global-muted-color: #999 !default;
+$global-muted-color: #424f5c !default;
 $global-link-color: #1e87f0 !default;
 $global-link-hover-color: #0f6ecd !default;
 
@@ -127,7 +127,8 @@ html {
     margin: 0 1.5rem;
 }
 
-.floating-action:hover {
+.floating-action:hover,
+.floating-action:focus {
     background-color: #fff;
 }
 
@@ -139,4 +140,28 @@ svg polyline {
 .floating-action:first-child .uk-icon svg path,
 .floating-action:first-child .uk-icon svg polyline {
     stroke: $global-danger-background !important;
+}
+
+// Navbar
+
+.uk-navbar-nav li a {
+    font-size: $global-xmedium-font-size;
+    text-transform: none;
+}
+
+.uk-navbar-left ul li a {
+    font-size: $global-xmedium-font-size;
+    font-family: 'Archivo Black';
+    color: $global-secondary-background !important;
+}
+
+// Inputs
+
+input.uk-input {
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.uk-form-label {
+    margin-top: 1rem;
 }

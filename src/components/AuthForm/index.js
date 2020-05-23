@@ -34,7 +34,7 @@ class AuthForm extends Component {
 
     // return the service depending on the pathname
     const action = isLogin ? login : signup;
-    const nextRoute = isLogin ? "/" : "login";
+    const nextRoute = isLogin ? "/foster/5ec3330e27cd000c7db3fec7" : "login";
 
     // convert credentials to string and save in local storage
     action(data)

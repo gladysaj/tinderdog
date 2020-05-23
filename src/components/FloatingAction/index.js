@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class FloatingAction extends Component {
     render() {
         return(
-            <button className="uk-button uk-button-default floating-action" type="button"><span uk-icon={"icon:" + this.props.icon}></span></button>
+            <Link className="uk-button uk-button-default floating-action" to={this.props.link}><span uk-icon={"icon:" + this.props.icon}></span></Link>
         )
     }
 }
