@@ -14,26 +14,26 @@ class Signup extends Component {
     this.setState({ user });
   };
 
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-//     const isLogin = this.props.location.pathname === "/login";
-//     const { user: credentials } = this.state;
-//     const action = isLogin ? login : signup;
-//     action(credentials)
-//       .then((res) => {
-//         const { user } = res.data;
-//         localStorage.setItem("user", JSON.stringify(user));
-//       })
-//       .catch((err) => {
-//         UIkit.notification({
-//           message: `<span uk-icon='icon: close'></span> ${err.response.data.msg}`,
-//           status: "danger",
-//           pos: "top-right",
-//         });
-//       });
-//   };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { user: credentials } = this.state;
+    const action = signup;
+    action(credentials)
+      .then((res) => {
+        const { user } = res.data;
+        localStorage.setItem("user", JSON.stringify(user));
+      })
+      .catch((err) => {
+        UIkit.notification({
+          message: `<span uk-icon='icon: close'></span> ${err.response.data.msg}`,
+          status: "danger",
+          pos: "top-right",
+        });
+      });
+  };
 
   render() {
+    
     return (
       <form
         onSubmit={this.handleSubmit}
