@@ -1,17 +1,30 @@
 import React, { Component } from "react";
+import { getDog, getDogs } from "../../services/dogService";
 import FosterCard from "../FosterCard";
-import { getDog } from "../../services/dogService";
 
 class FosterDogs extends Component {
   state = {
     dog: {},
+    data: [],
+    randomDogId: "",
   };
 
   componentDidMount() {
     const { id } = this.props.match.params;
+
     getDog(id).then((res) => {
-      const { data: dog } = res;
+      const { result: dog } = res.data;
       this.setState({ dog });
+    });
+
+    getDogs().then((res) => {
+      this.setState({ data: res.data });
+
+      let randomDog = this.state.data.results[
+        Math.floor(Math.random() * this.state.data.results.length)
+      ];
+
+      this.setState({ randomDogId: randomDog._id });
     });
   }
 
@@ -22,8 +35,18 @@ class FosterDogs extends Component {
       const { id } = nextProps.match.params;
 
       getDog(id).then((res) => {
-        const { data: dog } = res;
+        const { result: dog } = res.data;
         this.setState({ dog });
+      });
+
+      getDogs().then((res) => {
+        this.setState({ data: res.data });
+
+        let randomDog = this.state.data.results[
+          Math.floor(Math.random() * this.state.data.results.length)
+        ];
+
+        this.setState({ randomDogId: randomDog._id });
       });
     }
   }
@@ -36,11 +59,17 @@ class FosterDogs extends Component {
         </h1>
         {/* this needs to be populated dynamically with DB */}
         <FosterCard
-          image="https://source.unsplash.com/eoqnr8ikwFE"
-          name={this.state.dog.name}
-          breed="Welsh Corgi"
-          age="puppy"
-          description="Muji is a sweet, small dog. He loves sleeping, playing and being around people."
+          image={this.state.dog.image}
+          name={
+            this.state.dog.name +
+            " " +
+            (this.state.dog.gender === "Female" ? "♀" : "♂")
+          }
+          breed={this.state.dog.breed}
+          age={this.state.dog.age}
+          description={this.state.dog.description}
+          refreshDog={"/foster/" + this.state.randomDogId}
+          like=""
         />
       </section>
     );
