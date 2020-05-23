@@ -10,8 +10,8 @@ class Login extends Component {
     let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
     this.setState({ user });
-    console.log(this.state.user);
   };
+  
   render() {
     return (
       <form
