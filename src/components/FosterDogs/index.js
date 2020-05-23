@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FosterCard from "../FosterCard";
-import Button from '../Button'
 
 class FosterDogs extends Component {
   state = {};
@@ -19,8 +18,6 @@ class FosterDogs extends Component {
           age="puppy"
           description="Muji is a sweet, small dog. He loves sleeping, playing and being around people."
         />
-
-        <Button label="Show another 🦴" />
       </section>
     );
   }
