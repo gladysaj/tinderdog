@@ -9,3 +9,7 @@ export const login = (credential) => {
 export const signup = (credential) => {
   return axios.post("http://localhost:3000/api/users/signup", credential);
 };
+
+export const logout = () => {
+  return axios.post("http://localhost:3000/api/users/logout");
+};

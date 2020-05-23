@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { login } from "../../services/authServices";
 import { signup } from "../../services/authServices";
 import UIkit from "uikit";
+import AppContext from "../../AppContext";
 
 class AuthForm extends Component {
+  static contextType = AppContext;
   state = {
     user: {},
   };
@@ -21,12 +23,19 @@ class AuthForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault(); //evita que mi navegador se refresque
     const isLogin = this.props.location.pathname === "/login"; //para ayudarme a sabe que proceso se esta haciendo
+    const { setUser } = this.context;
     const { user } = this.state;
     const action = isLogin ? login : signup; //va a determinar si ejecuto el servicio de login o el servicio de signup
+    const { history } = this.props;
+    const nextRoute = isLogin ? "/" : "login";
     action(user)
       .then((res) => {
-        const { user } = res.data;
-        localStorage.setItem("user", JSON.stringify(user));
+        if (isLogin) {
+          const { user } = res.data;
+          localStorage.setItem("user", JSON.stringify(user));
+          setUser(user);
+        }
+        history.push(nextRoute);
       })
       .catch((err) => {
         UIkit.notification({
@@ -106,4 +115,3 @@ class AuthForm extends Component {
 }
 
 export default AuthForm;
-
