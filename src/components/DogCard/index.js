@@ -12,11 +12,11 @@ const Card = ({ image, name, breed, age, description }) => {
           <div className="uk-card-body uk-light uk-margin-xxlarge-top uk-overlay">
             <h2 className="uk-text-bold uk-text-left uk-text-xlarge">{name}</h2>
             <div className="uk-flex">
-              <p class="uk-pill uk-text-left uk-text-small uk-text-bold uk-text-uppercase uk-background-primary">
+              <p className="uk-pill uk-text-left uk-text-small uk-text-bold uk-text-uppercase uk-background-primary">
                 {breed}
               </p>
 
-              <p class="uk-pill uk-text-left uk-text-small uk-text-bold uk-text-uppercase uk-background-primary">
+              <p className="uk-pill uk-text-left uk-text-small uk-text-bold uk-text-uppercase uk-background-primary">
                 {age}
               </p>
             </div>
