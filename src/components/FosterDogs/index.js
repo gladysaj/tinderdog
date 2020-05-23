@@ -37,7 +37,7 @@ class FosterDogs extends Component {
         {/* this needs to be populated dynamically with DB */}
         <FosterCard
           image="https://source.unsplash.com/eoqnr8ikwFE"
-          name="Muji"
+          name={this.state.dog.name}
           breed="Welsh Corgi"
           age="puppy"
           description="Muji is a sweet, small dog. He loves sleeping, playing and being around people."
