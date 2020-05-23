@@ -47,7 +47,9 @@ class AuthForm extends Component {
   };
 
   render() {
+    // Compare with the props returned by react-router-dom
     const isLogin = this.props.location.pathname === "/login";
+
     return (
       <section className="uk-section">
         <div className="uk-container uk-flex uk-flex-center">
@@ -113,5 +115,7 @@ class AuthForm extends Component {
     );
   }
 }
+
+AuthForm.contextType = AppContext;
 
 export default AuthForm;

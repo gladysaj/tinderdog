@@ -4,19 +4,16 @@ import FloatingAction from "../FloatingAction";
 
 class FosterCard extends Component {
   render() {
+    const {refreshDog,...dog}=this.props
     return (
       <div className="card-container uk-margin-large-bottom">
         <DogCard
-          image={this.props.image}
-          name={this.props.name}
-          breed={this.props.breed}
-          age={this.props.age}
-          description={this.props.description}
+          {...dog}
         />
 
         <div className="uk-button-group floating-group uk-position-bottom-center">
-          <FloatingAction icon="refresh" />
-          <FloatingAction icon="heart" />
+          <FloatingAction icon="refresh" action={refreshDog} />
+          <FloatingAction icon="heart" link={this.props.like} />
         </div>
       </div>
     );

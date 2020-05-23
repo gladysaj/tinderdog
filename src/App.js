@@ -4,7 +4,7 @@ import Routes from "./Routes";
 import NavBar from "./components/NavBar";
 import AppContext from "./AppContext";
 import { withRouter } from "react-router";
-import { logout } from "./services/authServices"
+import { logout } from "./services/authServices";
 
 class App extends Component {
   state = {
@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <AppContext.Provider value={{ state, setUser, logout }}>
         <div className="App">
-          <NavBar user={state.user} logout={logout}/>
+          <NavBar user={state.user} logout={logout} />
           <Routes />
         </div>
       </AppContext.Provider>

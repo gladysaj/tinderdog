@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 
-class FloatingAction extends Component {
-    render() {
-        return(
-            <button className="uk-button uk-button-default floating-action" type="button"><span uk-icon={"icon:" + this.props.icon}></span></button>
-        )
-    }
-}
+const  FloatingAction =({action, icon})=>(
+    <button className="uk-button uk-button-default floating-action" onClick={action}><span uk-icon={"icon:" + icon}></span></button>
+)
 
-export default FloatingAction;
+export default FloatingAction
