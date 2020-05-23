@@ -5,16 +5,16 @@ import FloatingAction from "../FloatingAction";
 class FosterCard extends Component {
   render() {
     return (
-      <div>
+      <div className="card-container uk-margin-large-bottom">
         <DogCard
-          image="https://source.unsplash.com/eoqnr8ikwFE"
-          name="Muji"
-          breed="Welsh Corgi"
-          age="puppy"
-          description="Muji is a sweet, small dog. He loves sleeping, playing and being around people."
+          image={this.props.image}
+          name={this.props.name}
+          breed={this.props.breed}
+          age={this.props.age}
+          description={this.props.description}
         />
 
-        <div className="uk-button-group floating-group">
+        <div className="uk-button-group floating-group uk-position-bottom-center">
           <FloatingAction icon="heart" />
         </div>
       </div>
