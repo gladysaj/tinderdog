@@ -84,10 +84,6 @@ html {
     z-index: 997;
 }
 
-.match-card .floating-group .floating-action:first-child .uk-icon svg path {
-    stroke: $global-danger-background;
-}
-
 .card-container {
     position: relative;
 }
@@ -111,7 +107,6 @@ html {
     padding: 0.85rem 1.5rem;
     border-radius: 8px;
     font-weight: 500;
-    color: $global-secondary-background;
     font-size: $global-xmedium-font-size;
     text-transform: none;
 }
@@ -136,6 +131,12 @@ html {
     background-color: #fff;
 }
 
-.floating-action .uk-icon svg path {
-    fill: $global-primary-background;
+svg path,
+svg polyline {
+    stroke-width: 2;
+}
+
+.floating-action:first-child .uk-icon svg path,
+.floating-action:first-child .uk-icon svg polyline {
+    stroke: $global-danger-background !important;
 }

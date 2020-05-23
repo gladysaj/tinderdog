@@ -15,6 +15,7 @@ class FosterCard extends Component {
         />
 
         <div className="uk-button-group floating-group uk-position-bottom-center">
+          <FloatingAction icon="refresh" />
           <FloatingAction icon="heart" />
         </div>
       </div>
