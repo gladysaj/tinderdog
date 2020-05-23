@@ -54,7 +54,7 @@ class FosterDogs extends Component {
   render() {
     return (
       <section>
-        <h1 className="uk-margin-medium-top uk-text-bold uk-text-secondary">
+        <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary">
           Adopt a Dog
         </h1>
         {/* this needs to be populated dynamically with DB */}
