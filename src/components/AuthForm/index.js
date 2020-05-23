@@ -1,55 +1,46 @@
 import React, { Component } from "react";
-import { login, signup } from "../../services/authServices";
 import { Link } from "react-router-dom";
+import { login } from "../../services/authServices";
+import { signup } from "../../services/authServices";
+import UIkit from "uikit";
 import AppContext from "../../AppContext";
-import UIKit from "uikit";
 
 class AuthForm extends Component {
+  static contextType = AppContext;
   state = {
-    data: {},
-    showPassword: false,
-  };
-
-  handleShowPassword = () => {
-    const { showPassword } = this.state;
-    const showValue = !showPassword;
-    this.setState({ showPassword: showValue });
+    user: {},
   };
 
   handleChange = (e) => {
-    let { data } = this.state;
-    // spread operator allows for persistend data -> adding the key and value to the same object
-    // "name" is the attribute in the form field, "value" is whatever value the field contains at the time
-    data = { ...data, [e.target.name]: e.target.value };
-    this.setState({ data });
+    let { user } = this.state; //Sacamos al user del state para tener un codigo mas limpio
+    //Reasignamos a user y lo ponemos igual a todo lo que ya haya en user ( ...user ) mas lo
+    //que nos vaya poniendo el usuario en el input (e.target.name), name puede ser el email, password, etc
+    user = { ...user, [e.target.name]: e.target.value };
+    this.setState({ user }); //ahora actualizamos el estado con esta nueva informacion
   };
 
+  //esta funcion es para poder crear un nuevo usuario o poder logearme
   handleSubmit = (e) => {
-    e.preventDefault();
-
-    const { data } = this.state;
+    e.preventDefault(); //evita que mi navegador se refresque
+    const isLogin = this.props.location.pathname === "/login"; //para ayudarme a sabe que proceso se esta haciendo
     const { setUser } = this.context;
+    const { user } = this.state;
+    const action = isLogin ? login : signup; //va a determinar si ejecuto el servicio de login o el servicio de signup
     const { history } = this.props;
-    const isLogin = this.props.location.pathname === "/login";
-
-    // return the service depending on the pathname
-    const action = isLogin ? login : signup;
-    const nextRoute = isLogin ? "/foster/5ec3330e27cd000c7db3fec7" : "login";
-
-    // convert credentials to string and save in local storage
-    action(data)
+    const nextRoute = isLogin ? "/" : "login";
+    action(user)
       .then((res) => {
-        const { user } = res.data;
-        localStorage.setItem("user", JSON.stringify(user));
-        setUser(user);
-
+        if (isLogin) {
+          const { user } = res.data;
+          localStorage.setItem("user", JSON.stringify(user));
+          setUser(user);
+        }
         history.push(nextRoute);
       })
       .catch((err) => {
-        // Handle errors on front-end with UIKit
-        UIKit.notification({
+        UIkit.notification({
           message: `<span uk-icon='icon: close'></span> ${err.response.data.msg}`,
-          status: "warning",
+          status: "danger",
           pos: "top-right",
         });
       });
@@ -63,8 +54,7 @@ class AuthForm extends Component {
       <section className="uk-section">
         <div className="uk-container uk-flex uk-flex-center">
           <div className="uk-width-1-4">
-            <h1>{isLogin ? "Login" : "Signup"}</h1>
-
+            <h3>{isLogin ? "Login" : "Signup"}</h3>
             <form
               onSubmit={this.handleSubmit}
               className="uk-width-1-1 uk-form-stacked uk-flex uk-flex-center uk-flex-column"
@@ -83,12 +73,11 @@ class AuthForm extends Component {
                     id="email"
                     name="email"
                     className="uk-input"
-                    type="text"
+                    type="email"
                     required
                   />
                 </div>
-
-                <div>
+                <div className="uk-margin">
                   <label className="uk-form-label" htmlFor="password">
                     Password:
                   </label>
@@ -102,32 +91,23 @@ class AuthForm extends Component {
                       id="password"
                       name="password"
                       className="uk-input"
-                      type={this.state.showPassword ? "text" : "password"}
+                      type="password"
                       required
                     />
                   </div>
                 </div>
               </div>
-
-              <p
-                className="uk-text-meta uk-text-primary cursor-pointer"
-                onClick={this.handleShowPassword}
-              >
-                Show password
-              </p>
-
-              <button className="uk-button uk-button-primary">
-                {isLogin ? "Login" : "Signup"}
-              </button>
-
               {isLogin ? (
-                <div className="uk-text-meta uk-margin-top">
-                  Not a member yet?{" "}
-                  <Link to="/signup" className="uk-text-primary">
-                    Signup here
+                <div className="uk-text-meta">
+                  Aún no tienes cuenta?{" "}
+                  <Link className="uk-text-primary" to="/signup">
+                    Crear cuenta
                   </Link>
                 </div>
               ) : null}
+              <button className="uk-button uk-button-primary">
+                {isLogin ? "Login" : "Signup"}
+              </button>
             </form>
           </div>
         </div>

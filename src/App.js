@@ -1,28 +1,35 @@
-import React, { Component } from 'react';
-import './App.css';
-import Navbar from './components/NavBar';
-import Routes from './Routes';
-import AppContext from './AppContext'
+import React, { Component } from "react";
+import "./App.css";
+import Routes from "./Routes";
+import NavBar from "./components/NavBar";
+import AppContext from "./AppContext";
+import { withRouter } from "react-router";
+import { logout } from "./services/authServices";
 
 class App extends Component {
-
   state = {
-    user: JSON.parse(localStorage.getItem("user")) || {}
-  }
+    user: JSON.parse(localStorage.getItem("user")) || {},
+  };
 
   setUser = (user) => {
-    console.log("set user", user)
     this.setState({ user });
-  }
+  };
+
+  logout = () => {
+    const { history } = this.props;
+    logout().then(() => {
+      localStorage.removeItem("user");
+      this.setState({ user: {} });
+      history.push("/login");
+    });
+  };
 
   render() {
-    const { state, setUser } = this;
-
+    const { state, setUser, logout } = this;
     return (
-      // wrap the app in the context provider so the whole app has access to the data
-      <AppContext.Provider value={{ state: state, setUser }}>
+      <AppContext.Provider value={{ state, setUser, logout }}>
         <div className="App">
-          <Navbar />
+          <NavBar user={state.user} logout={logout} />
           <Routes />
         </div>
       </AppContext.Provider>
@@ -30,4 +37,6 @@ class App extends Component {
   }
 }
 
-export default App;
+const AppWithRouter = withRouter(App);
+
+export default AppWithRouter;

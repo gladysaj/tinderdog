@@ -22,7 +22,7 @@ class FosterDogs extends Component {
     // solo traer a todos, hacer el math.random para seleccionar uno
     getDogs().then((res) => {
       //this.setState({ data: res.data });
-
+      console.log(res);
       let randomDog =
         res.data.results[Math.floor(Math.random() * res.data.results.length)];
 
