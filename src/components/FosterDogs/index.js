@@ -1,8 +1,32 @@
 import React, { Component } from "react";
 import FosterCard from "../FosterCard";
+import { getDog } from "../../services/dogService";
 
 class FosterDogs extends Component {
-  state = {};
+  state = {
+    dog: {},
+  };
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    getDog(id).then((res) => {
+      const { data: dog } = res;
+      this.setState({ dog });
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.match, this.props.match);
+
+    if (nextProps.match.params.id !== this.props.match.params.id) {
+      const { id } = nextProps.match.params;
+
+      getDog(id).then((res) => {
+        const { data: dog } = res;
+        this.setState({ dog });
+      });
+    }
+  }
 
   render() {
     return (
