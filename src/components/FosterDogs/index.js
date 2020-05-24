@@ -13,7 +13,7 @@ class FosterDogs extends Component {
   componentDidMount() {
     getDogs().then((res) => {
       let randomDog =
-        res.data.results[Math.floor(Math.random() * res.data.results.length)];
+        res.data[Math.floor(Math.random() * res.data.length)];
 
       this.setState({ dog: randomDog, data: res.data, dogsShown: res.data });
     });
