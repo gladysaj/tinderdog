@@ -57,7 +57,9 @@ $global-border: #cacaee !default;
 
 // Other general styles
 html {
-    background: $global-muted-background;
+    background-color: $global-muted-background;
+    background-image: url(../assets/body.png);
+    background-size: cover;
 }
 
 // Utility
@@ -67,9 +69,11 @@ html {
 
 .bg-img {
     z-index: 0;
+    opacity: 0.85;
 }
 
 .uk-overlay {
+    height: auto;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 70%);
 }
 
@@ -77,6 +81,7 @@ html {
 .uk-card {
     border-radius: 24px;
     overflow: hidden;
+    background-color: $global-secondary-background;
 }
 
 .uk-card-body {
@@ -86,6 +91,16 @@ html {
 
 .card-container {
     position: relative;
+}
+
+.uk-link-toggle {
+    transition: all 0.5s ease-out;
+    transform: perspective(100px) translateZ(0px);
+}
+
+.uk-link-toggle:hover {
+    box-shadow: 0 32px 80px -12px rgba(16, 3, 92, 0.5);
+    transform: perspective(100px) translateZ(5px);
 }
 
 // Pill
@@ -143,7 +158,6 @@ svg polyline {
 }
 
 // Navbar
-
 .uk-navbar-nav li a {
     font-size: $global-xmedium-font-size;
     text-transform: none;
@@ -156,7 +170,6 @@ svg polyline {
 }
 
 // Inputs
-
 input.uk-input {
     padding: 1.5rem;
     border-radius: 8px;

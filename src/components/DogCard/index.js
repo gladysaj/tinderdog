@@ -1,7 +1,7 @@
 import React from "react";
 
 // this is destructuring the props object e.g. props.image
-const Card = ({ image, name, breed, age, description, gender }) => {
+const DogCard = ({ image, name, breed, age, description, gender }) => {
   return (
     <div
       className="uk-child-width-1-3@m uk-child-width-1-2@s uk-flex-center uk-padding-small uk-text-left"
@@ -30,4 +30,4 @@ const Card = ({ image, name, breed, age, description, gender }) => {
   );
 };
 
-export default Card;
+export default DogCard;
