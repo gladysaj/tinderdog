@@ -34,11 +34,11 @@ class FosterDogs extends Component {
   }
 
   handleNewDog = () => {
-    let randomDog = this.state.dogsShown.results[
-      Math.floor(Math.random() * this.state.dogsShown.results.length)
+    let randomDog = this.state.dogsShown[
+      Math.floor(Math.random() * this.state.dogsShown.length)
     ];
 
-    const filter = this.state.dogsShown.results.filter(
+    const filter = this.state.dogsShown.filter(
       (dog) => dog._id !== randomDog._id
     );
 
