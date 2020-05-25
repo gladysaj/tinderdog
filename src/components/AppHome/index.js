@@ -20,7 +20,7 @@ const AppHome = () => {
         <OptionCard
           title="Match"
           description="Browse dogs and find a the perfect match for your fur baby."
-          link=""
+          link="/match"
           background={matchBg}
         />
       </div>

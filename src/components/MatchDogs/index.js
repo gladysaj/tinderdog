@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getDogs } from "../../services/dogService";
 import ActionCard from "../ActionCard";
 
-class FosterDogs extends Component {
+class MatchDogs extends Component {
   state = {
     dog: {},
     data: [],
@@ -64,4 +64,4 @@ class FosterDogs extends Component {
   }
 }
 
-export default FosterDogs;
+export default MatchDogs;
