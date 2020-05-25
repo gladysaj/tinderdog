@@ -9,6 +9,13 @@ class AuthForm extends Component {
   static contextType = AppContext;
   state = {
     user: {},
+    showPassword: false,
+  };
+
+  handleShowPassword = () => {
+    const { showPassword } = this.state;
+    const showValue = !showPassword;
+    this.setState({ showPassword: showValue });
   };
 
   handleChange = (e) => {
@@ -48,6 +55,7 @@ class AuthForm extends Component {
 
   render() {
     // Compare with the props returned by react-router-dom
+    const { showPassword } = this.state;
     const isLogin = this.props.location.pathname === "/login";
 
     return (
@@ -59,45 +67,46 @@ class AuthForm extends Component {
               onSubmit={this.handleSubmit}
               className="uk-width-1-1 uk-form-stacked uk-flex uk-flex-center uk-flex-column"
             >
-              
               <div className="uk-margin">
-             { isLogin ? null : (<div>
-              <label className="uk-form-label" htmlFor="email">
-                  Name:
-                </label>
-                <div className="uk-inline">
-                  <span
-                    className="uk-form-icon uk-form-icon-flip"
-                    uk-icon="icon: user"
-                  ></span>
-                  <input
-                    onChange={this.handleChange}
-                    id="name"
-                    //este name debe ser el mismo que el campo del modelo de User.js
-                    name="name"
-                    className="uk-input"
-                    type="text"
-                    required
-                  />
-                </div>
-                <label className="uk-form-label" htmlFor="email">
-                  Phone number:
-                </label>
-                <div className="uk-inline">
-                  <span
-                    className="uk-form-icon uk-form-icon-flip"
-                    uk-icon="icon: receiver"
-                  ></span>
-                  <input
-                    onChange={this.handleChange}
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    className="uk-input"
-                    type="text"
-                    required
-                  />
-                </div>
-             </div>)}
+                {isLogin ? null : (
+                  <div>
+                    <label className="uk-form-label" htmlFor="email">
+                      Name:
+                    </label>
+                    <div className="uk-inline">
+                      <span
+                        className="uk-form-icon uk-form-icon-flip"
+                        uk-icon="icon: user"
+                      ></span>
+                      <input
+                        onChange={this.handleChange}
+                        id="name"
+                        //este name debe ser el mismo que el campo del modelo de User.js
+                        name="name"
+                        className="uk-input"
+                        type="text"
+                        required
+                      />
+                    </div>
+                    <label className="uk-form-label" htmlFor="email">
+                      Phone number:
+                    </label>
+                    <div className="uk-inline">
+                      <span
+                        className="uk-form-icon uk-form-icon-flip"
+                        uk-icon="icon: receiver"
+                      ></span>
+                      <input
+                        onChange={this.handleChange}
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        className="uk-input"
+                        type="text"
+                        required
+                      />
+                    </div>
+                  </div>
+                )}
                 <label className="uk-form-label" htmlFor="email">
                   Email:
                 </label>
@@ -129,9 +138,10 @@ class AuthForm extends Component {
                       id="password"
                       name="password"
                       className="uk-input"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       required
                     />
+                    <button onClick={this.handleShowPassword}> Show password </button>
                   </div>
                 </div>
               </div>
