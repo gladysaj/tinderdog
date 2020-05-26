@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { getDogs } from "../../services/dogService";
-import ActionCard from "../ActionCard";
+import { getFosterDogs } from "../../services/dogService";
+import DogCard from "../DogCard";
+import FloatingAction from "../FloatingAction";
 
 class FosterDogs extends Component {
   state = {
@@ -11,9 +12,8 @@ class FosterDogs extends Component {
   };
 
   componentDidMount() {
-    getDogs().then((res) => {
-      let randomDog =
-        res.data[Math.floor(Math.random() * res.data.length)];
+    getFosterDogs().then((res) => {
+      let randomDog = res.data[Math.floor(Math.random() * res.data.length)];
 
       this.setState({ dog: randomDog, data: res.data, dogsShown: res.data });
     });
@@ -53,12 +53,24 @@ class FosterDogs extends Component {
           Adopt a Dog
         </h1>
 
-        <ActionCard
+        {/* <ActionCard
           {...dog}
           gender={this.state.dog.gender === "Female" ? "♀" : "♂"}
           refreshDog={this.handleNewDog}
           like=""
-        />
+        /> */}
+
+        <div className="card-container uk-margin-large-bottom">
+          <DogCard
+            {...dog}
+            gender={this.state.dog.gender === "Female" ? "♀" : "♂"}
+          />
+
+          <div className="uk-button-group floating-group uk-position-bottom-center">
+            <FloatingAction icon="refresh" action={this.handleNewDog} />
+            <FloatingAction icon="heart" action={this.handleLike} />
+          </div>
+        </div>
       </section>
     );
   }

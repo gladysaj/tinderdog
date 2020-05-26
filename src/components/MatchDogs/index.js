@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getDogs } from "../../services/dogService";
+import { getMatchDogs } from "../../services/dogService";
 import Modal from "../Modal";
 import DogCard from "../DogCard";
 import FloatingAction from "../FloatingAction";
@@ -13,10 +13,15 @@ class MatchDogs extends Component {
   };
 
   componentDidMount() {
-    getDogs().then((res) => {
+    getMatchDogs().then((res) => {
       let randomDog = res.data[Math.floor(Math.random() * res.data.length)];
 
-      this.setState({ dog: randomDog, data: res.data, dogsShown: res.data, gender: res.data });
+      this.setState({
+        dog: randomDog,
+        data: res.data,
+        dogsShown: res.data,
+        gender: res.data,
+      });
     });
   }
 
