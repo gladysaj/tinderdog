@@ -10,3 +10,4 @@ export const getDogs = () => {
 export const getFosterDogs = () => {
     return axios.get("http://localhost:3000/api/foster")
 }
+
