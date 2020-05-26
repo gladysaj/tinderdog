@@ -37,9 +37,21 @@ const NavBar = ({ user, logout }) => {
         )}
 
         {user._id ? (
-            <div className="uk-navbar-right">
+          <div className="uk-navbar-right">
             <ul className="uk-navbar-nav">
-            <li>
+              <li>
+                <Link to={"/foster"}>
+                  Adopt
+                  {/* Falta agregar la logica para ver a donde va a mandar este link */}
+                </Link>
+              </li>
+              <li>
+                <Link to={"/match"}>
+                  Match
+                  {/* Falta agregar la logica para ver a donde va a mandar este link */}
+                </Link>
+              </li>
+              <li>
                 {/* Aqui estoy redirigiendo a una ruta que aun no existe. Esta ruta mostrara la card del perfil del usuario */}
                 <Link to="/profile">
                   <div className="uk-grid-small uk-flex-middle" uk-grid="true">
@@ -63,16 +75,6 @@ const NavBar = ({ user, logout }) => {
                   </ul>
                 </div>
               </li>
-              <li>
-                <Link to={"/signup"}>
-                  <span role="img" aria-label="celebrate">
-                    🥳
-                  </span>{" "}
-                  Adopt o match 
-                  {/* Falta agregar la logica para ver a donde va a mandar este link */}
-                </Link>
-              </li>
-
             </ul>
           </div>
         ) : (
