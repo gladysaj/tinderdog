@@ -47,6 +47,7 @@ const NavBar = ({ user, logout }) => {
                   Adopt o match
                   {/* Falta agregar la logica para ver a donde va a mandar este link */}
                 </Link>
+                
               </li>
               <li>
                 {/* Aqui estoy redirigiendo a una ruta que aun no existe. Esta ruta mostrara la card del perfil del usuario */}

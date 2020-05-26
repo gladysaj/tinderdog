@@ -52,10 +52,10 @@ class AuthForm extends Component {
         });
       });
   };
-
   render() {
     // Compare with the props returned by react-router-dom
     const { showPassword } = this.state;
+
     const isLogin = this.props.location.pathname === "/login";
 
     return (
