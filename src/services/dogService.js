@@ -4,5 +4,9 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 export const getDogs = () => {
-    return axios.get("http://localhost:3000/api/dogs")
+    return axios.get("http://localhost:3000/api/match")
+}
+
+export const getFosterDogs = () => {
+    return axios.get("http://localhost:3000/api/foster")
 }

@@ -15,7 +15,7 @@ class MatchDogs extends Component {
       let randomDog =
         res.data[Math.floor(Math.random() * res.data.length)];
 
-      this.setState({ dog: randomDog, data: res.data, dogsShown: res.data });
+      this.setState({ dog: randomDog, data: res.data, dogsShown: res.data, gender: res.data });
     });
   }
 
@@ -50,7 +50,7 @@ class MatchDogs extends Component {
     return (
       <section>
         <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary">
-          Adopt a Dog
+          Match a dog
         </h1>
 
         <ActionCard
