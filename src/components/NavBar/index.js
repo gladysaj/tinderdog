@@ -40,14 +40,16 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-right">
             <ul className="uk-navbar-nav">
               <li>
-                <Link to={"/signup"}>
-                  <span role="img" aria-label="celebrate">
-                    🥳
-                  </span>{" "}
-                  Adopt o match
+                <Link to={"/foster"}>
+                  Adopt
                   {/* Falta agregar la logica para ver a donde va a mandar este link */}
                 </Link>
-                
+              </li>
+              <li>
+                <Link to={"/match"}>
+                  Match
+                  {/* Falta agregar la logica para ver a donde va a mandar este link */}
+                </Link>
               </li>
               <li>
                 {/* Aqui estoy redirigiendo a una ruta que aun no existe. Esta ruta mostrara la card del perfil del usuario */}
