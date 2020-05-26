@@ -129,7 +129,7 @@ class AuthForm extends Component {
                     Password:
                   </label>
                   <div className="uk-inline">
-                    <Link onClick={this.handleShowPassword}
+                    <Link to="#" onClick={this.handleShowPassword}
                       className="uk-form-icon uk-icon-link uk-form-icon-flip"
                       uk-icon="icon: lock"
                     ></Link>
