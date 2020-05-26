@@ -10,4 +10,7 @@ export const getDogs = () => {
 export const getFosterDogs = () => {
     return axios.get("http://localhost:3000/api/foster")
 }
-
+  
+export const createDogs = () => {
+    return axios.post("http://localhost:3000/api/dog")
+}
