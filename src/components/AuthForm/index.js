@@ -129,10 +129,10 @@ class AuthForm extends Component {
                     Password:
                   </label>
                   <div className="uk-inline">
-                    <span
-                      className="uk-form-icon uk-form-icon-flip"
+                    <Link onClick={this.handleShowPassword}
+                      className="uk-form-icon uk-icon-link uk-form-icon-flip"
                       uk-icon="icon: lock"
-                    ></span>
+                    ></Link>
                     <input
                       onChange={this.handleChange}
                       id="password"
@@ -141,12 +141,11 @@ class AuthForm extends Component {
                       type={showPassword ? "text" : "password"}
                       required
                     />
-                    <button onClick={this.handleShowPassword}> Show password </button>
                   </div>
                 </div>
               </div>
               {isLogin ? (
-                <div className="uk-text-meta">
+                <div className="uk-text-meta uk-padding-small uk-padding-remove-top">
                   Aún no tienes cuenta?{" "}
                   <Link className="uk-text-primary" to="/signup">
                     Crear cuenta
