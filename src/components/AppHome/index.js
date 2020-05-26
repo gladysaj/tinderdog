@@ -3,7 +3,19 @@ import OptionCard from "../OptionCard";
 import matchBg from "../../assets/match.jpg";
 import fosterBg from "../../assets/foster.jpg";
 
+// usar appcontext accedar a la info del usuario, checar si tiene un perro
 const AppHome = () => {
+
+//   handleRouteChange = () => {
+//   const { dogs } = this.context.user;
+//   const { history } = this.props;
+//   if (dogs.length > 0) {
+//     history.push("/match");
+//   } else {
+//     // abren el modal
+//   }
+// };
+
   return (
     <section className="uk-margin-large-top">
       <div
@@ -20,6 +32,7 @@ const AppHome = () => {
         <OptionCard
           title="Match"
           description="Browse dogs and find a the perfect match for your fur baby."
+          // Validar si el usuario tiene un perro "handleRouteChange"
           link="/match"
           background={matchBg}
         />
