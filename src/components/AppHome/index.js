@@ -3,7 +3,7 @@ import OptionCard from "../OptionCard";
 import matchBg from "../../assets/match.jpg";
 import fosterBg from "../../assets/foster.jpg";
 
-// usar appcontext accedar a la info del usuario, checar si tiene un perro
+// usar appcontext acceder a la info del usuario, checar si tiene un perro
 const AppHome = () => {
 
 //   handleRouteChange = () => {
