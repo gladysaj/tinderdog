@@ -5,20 +5,20 @@ class Modal extends Component {
   render() {
     return (
       <div
-        id="modal-success"
+        id={this.props.id}
         className="uk-margin-auto-vertical"
         uk-modal="true"
       >
         <div className="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
           <h2 className="uk-modal-title uk-text-bold uk-text-center">
-            Yay! It's a match
+            {this.props.title}
           </h2>
           <p className="uk-text-center">
-            You can now contact the dog's owner to arrange a meetup
+            {this.props.text}
           </p>
           <p className="uk-text-center">
             <Link to="" className="uk-button uk-button-primary">
-              Get in touch
+              {this.props.label}
             </Link>
           </p>
         </div>
