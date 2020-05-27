@@ -5,12 +5,12 @@ axios.defaults.withCredentials = true;
 
 export const getDogs = () => {
     return axios.get("http://localhost:3000/api/match")
-}
+};
 
 export const getFosterDogs = () => {
     return axios.get("http://localhost:3000/api/foster")
-}
+};
   
-export const createDogs = () => {
-    return axios.post("http://localhost:3000/api/dog")
-}
+export const createDogs = (dog) => {
+    return axios.post("http://localhost:3000/api/create-dog", dog)
+};
