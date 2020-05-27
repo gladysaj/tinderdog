@@ -42,7 +42,13 @@ class CreateDogForm extends Component {
               placeholder="Owner" />
            </div>
          
-             <button class="uk-button uk-button-default" uk-tooltip="Foster">Give up for adoption</button>
+           <div class="uk-margin">
+            <div class="uk-form-label"> Give up for adoption? </div>
+             <div class="uk-form-controls">
+               <label><input class="uk-radio" type="radio" name="radio1"/> Yes </label><br/>
+               <label><input class="uk-radio" type="radio" name="radio1"/> No </label>
+             </div>
+           </div>
 
             <div className="uk-margin">
              <label className="uk-form-label" htmlFor="name"> Name: </label>
