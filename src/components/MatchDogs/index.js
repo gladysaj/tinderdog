@@ -59,7 +59,12 @@ class MatchDogs extends Component {
     const { dog } = this.state;
     return (
       <section>
-        <Modal />
+        <Modal
+          id="modal-success"
+          title="Yay! I'ts a Match"
+          text="You can now contact the dog's owner to arrange a meeting"
+          label="Get in touch"
+        />
         <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary">
           Match a dog
         </h1>

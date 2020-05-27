@@ -3,55 +3,80 @@ import AppContext from "../../AppContext";
 import OptionCard from "../OptionCard";
 import matchBg from "../../assets/match.jpg";
 import fosterBg from "../../assets/foster.jpg";
+import Modal from "../Modal";
 import { getOwnerDogs } from "../../services/userService";
 
 // usar appcontext acceder a la info del usuario, checar si tiene un perro
 class AppHome extends Component {
   static contextType = AppContext;
 
-  handleRouteChange = () => {
+  state = {
+    dogs: [],
+    target: false,
+  };
+
+  componentDidMount() {
     getOwnerDogs()
       .then((res) => {
-        console.log(res);
         const { dogs } = res.data;
-        const { history } = this.props;
 
-        if (dogs.length) {
-          console.log("si tienes perros", dogs);
-          // history.push("/match");
-        } else {
-          // abren el modal
-          console.log("tienes que agregar un perro", dogs);
-        }
+        this.setState({ dogs });
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  handleCheckDogs = () => {
+    const { dogs } = this.state;
+    const { history } = this.props;
+
+    if (dogs.length > 0) {
+      history.push("/match");
+    } else {
+      this.setState({ target: true });
+    }
+  };
+
+  handleRouteChange = () => {
+    const { history } = this.props;
+    history.push("/foster");
   };
 
   render() {
     return (
-      <section className="uk-margin-large-top">
-        <div
-          className="uk-child-width-1-3@m uk-child-width-1-2@s uk-flex-center uk-padding-small uk-text-left"
-          uk-grid="true"
-        >
-          <OptionCard
-            title="Adopt"
-            description="Browse lovely doggies and choose the right one to become your fur baby forever"
-            link="/foster"
-            background={fosterBg}
-          />
+      <div>
+        <Modal
+          id="modal-addDog"
+          title="Add a dog first"
+          text="To find matches for your dog, you must first have a dog, duh."
+          label="Add a dog"
+        />
 
-          <OptionCard
-            title="Match"
-            description="Browse dogs and find a the perfect match for your fur baby."
-            // Validar si el usuario tiene un perro "handleRouteChange"
-            action={this.handleRouteChange}
-            background={matchBg}
-          />
-        </div>
-      </section>
+        <section className="uk-margin-large-top">
+          <div
+            className="uk-child-width-1-3@m uk-child-width-1-2@s uk-flex-center uk-padding-small uk-text-left"
+            uk-grid="true"
+          >
+            <OptionCard
+              title="Adopt"
+              description="Browse lovely doggies and choose the right one to become your fur baby forever"
+              action={this.handleRouteChange}
+              toggle=""
+              background={fosterBg}
+            />
+
+            <OptionCard
+              title="Match"
+              description="Browse dogs and find a the perfect match for your fur baby."
+              // Validar si el usuario tiene un perro
+              action={this.handleCheckDogs}
+              toggle={this.state.target ? "target: #modal-addDog" : ""}
+              background={matchBg}
+            />
+          </div>
+        </section>
+      </div>
     );
   }
 }

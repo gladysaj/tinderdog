@@ -1,10 +1,11 @@
 import React from "react";
 
-const OptionCard = ({ background, title, description, action }) => {
+const OptionCard = ({ background, title, description, action, toggle }) => {
   return (
     <div>
       <button
         onClick={action}
+        uk-toggle={toggle}
         className="uk-display-block uk-card uk-card-default uk-cover-container uk-link-toggle"
       >
         <div className="uk-card-body uk-light uk-margin-xxlarge-top">

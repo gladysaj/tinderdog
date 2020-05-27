@@ -16,7 +16,7 @@ class FosterDogs extends Component {
       let randomDog = res.data[Math.floor(Math.random() * res.data.length)];
 
       this.setState({ dog: randomDog, data: res.data, dogsShown: res.data });
-    });
+    }).catch(err => console.log(err));
   }
 
   componentWillReceiveProps(nextProps) {
