@@ -61,13 +61,13 @@ class AuthForm extends Component {
     return (
       <section className="uk-section">
         <div className="uk-container uk-flex uk-flex-center">
-          <div className="uk-width-1-4">
+          <div className="uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s">
             <h3>{isLogin ? "Login" : "Signup"}</h3>
             <form
               onSubmit={this.handleSubmit}
               className="uk-width-1-1 uk-form-stacked uk-flex uk-flex-center uk-flex-column"
             >
-              <div className="uk-margin">
+              <div className="uk-margin-top">
                 {isLogin ? null : (
                   <div>
                     <label className="uk-form-label" htmlFor="email">
@@ -124,15 +124,16 @@ class AuthForm extends Component {
                     required
                   />
                 </div>
-                <div className="uk-margin">
+                <div className="uk-margin-top">
                   <label className="uk-form-label" htmlFor="password">
                     Password:
                   </label>
                   <div className="uk-inline">
-                    <Link to="#" onClick={this.handleShowPassword}
+                    <span
+                      to="#"
                       className="uk-form-icon uk-icon-link uk-form-icon-flip"
                       uk-icon="icon: lock"
-                    ></Link>
+                    ></span>
                     <input
                       onChange={this.handleChange}
                       id="password"
@@ -143,18 +144,27 @@ class AuthForm extends Component {
                     />
                   </div>
                 </div>
+                <Link
+                  to="#"
+                  className="uk-text-primary uk-text-meta"
+                  onClick={this.handleShowPassword}
+                >
+                  Show password
+                </Link>
               </div>
+              <button className="uk-button uk-button-primary uk-margin-top">
+                {isLogin ? "Login" : "Signup"}
+              </button>
+
               {isLogin ? (
-                <div className="uk-text-meta uk-padding-small uk-padding-remove-top">
-                  Aún no tienes cuenta?{" "}
+                <div className="uk-padding-small">
+                  Not a member yet?
                   <Link className="uk-text-primary" to="/signup">
-                    Crear cuenta
+                    {" "}
+                    Create an account
                   </Link>
                 </div>
               ) : null}
-              <button className="uk-button uk-button-primary">
-                {isLogin ? "Login" : "Signup"}
-              </button>
             </form>
           </div>
         </div>
