@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import AppContext from "../../AppContext";
 import Card from "./Card";
+import { updateUser } from "../../services/profileServices";
 
 class EditProfile extends Component {
   static contextType = AppContext;
@@ -10,21 +11,31 @@ class EditProfile extends Component {
   };
 
   handleChange = (e) => {
-    let { user } = this.state; //Sacamos al user del state para tener un codigo mas limpio
-    //Reasignamos a user y lo ponemos igual a todo lo que ya haya en user ( ...user ) mas lo
-    //que nos vaya poniendo el usuario en el input (e.target.name), name puede ser el email, password, etc
+    let { user } = this.state; 
     user = { ...user, [e.target.name]: e.target.value };
-    this.setState({ user }); //ahora actualizamos el estado con esta nueva informacion
+    this.setState({ user }); 
   };
-  
+
   componentDidMount() {
     let { user } = this.state;
     user = this.context.user;
     this.setState({ user });
   }
 
-  // handleChange = () => {};
-  handleSubmit = () => {};
+  handleSubmit = () => {
+    let { user } = this.state;
+    updateUser(user)
+      .then((res) => {
+        const { user } = res.data;
+        localStorage.setItem("user", JSON.stringify(user));
+
+        this.context.setUser(user);
+
+        //usuario esta actualizado (feedback)
+        //tenemos que usar la funcion setUser del context para actualizar el usuario en el context
+      })
+      .catch();
+  };
 
   render() {
     let { user } = this.state;
@@ -68,7 +79,6 @@ class EditProfile extends Component {
                 <input
                   onChange={this.handleChange}
                   id="name"
-                  //este name debe ser el mismo que el campo del modelo de User.js
                   name="name"
                   className="uk-input"
                   type="text"
@@ -95,7 +105,6 @@ class EditProfile extends Component {
                   type="text"
                   required
                   placeholder="Update your phone number"
-
                   value={
                     user["phoneNumber"] !== undefined ? user["phoneNumber"] : ""
                   }
@@ -119,6 +128,9 @@ class EditProfile extends Component {
                   type="text"
                   placeholder="Add a description"
                   required
+                  value={
+                    user["description"] !== undefined ? user["description"] : ""
+                  }
                 />
               </div>
             </div>

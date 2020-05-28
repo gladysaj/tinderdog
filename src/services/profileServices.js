@@ -17,3 +17,7 @@ export const getUser = () => {
 export const getFosterDogs = () => {
     return axios.get("http://localhost:3000/api/foster")
 }
+
+export const updateUser = () => {
+    // return axios.patch("http://localhost:3000/api/")
+}
