@@ -40,39 +40,61 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-right">
             <ul className="uk-navbar-nav">
               <li>
-                <Link to={"/foster"}>
-                  Adopt
-                  {/* Falta agregar la logica para ver a donde va a mandar este link */}
-                </Link>
+                <Link to={"/foster"}>Adopt</Link>
               </li>
               <li>
-                <Link to={"/match"}>
-                  Match
-                  {/* Falta agregar la logica para ver a donde va a mandar este link */}
-                </Link>
+                <Link to={"/match"}>Match</Link>
               </li>
               <li>
-                {/* Aqui estoy redirigiendo a una ruta que aun no existe. Esta ruta mostrara la card del perfil del usuario */}
-                <Link to="/profile">
-                  <div className="uk-grid-small uk-flex-middle" uk-grid="true">
-                    <div className="uk-width-auto">
-                      <img
-                        className="uk-border-circle"
-                        width="40"
-                        height="40"
-                        alt={user.name}
-                        src={user.profile_picture}
-                      />
-                    </div>
-                    <div className="uk-width-expand">
-                      <div className="uk-margin-remove-bottom">{user.name}</div>
-                    </div>
+                <div className="uk-inline">
+                  <button
+                    className="uk-button uk-button-default uk-button-primary"
+                    type="button"
+                  >
+                    <div
+                      className="uk-grid-small uk-flex-middle"
+                      uk-grid="true"
+                    >
+                      <div className="uk-width-auto">
+                        <img
+                          className="uk-border-circle"
+                          width="40"
+                          height="40"
+                          alt={user.name}
+                          src={user.profile_picture || "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"}
+                        />
+                      </div>
+                      <div className="uk-width-expand">
+                        <div className="uk-margin-remove-bottom">
+                          {user.name}
+                        </div>
+                      </div>
+                    </div>{" "}
+                  </button>
+                  <div uk-dropdown="pos: bottom-justify">
+                    <ul className="uk-nav uk-dropdown-nav">
+                      <li className="uk-nav-header">
+                        <Link to="/profile">
+                          <span
+                            className="uk-margin-small-right"
+                            uk-icon="icon: user"
+                          ></span>{" "}
+                          Profile
+                        </Link>
+                      </li>
+
+                      <li className="uk-nav-divider"></li>
+                      <li className="uk-nav-header" onClick={logout}>
+                        <Link to="">
+                          <span
+                            className="uk-margin-small-right"
+                            uk-icon="icon: sign-out"
+                          ></span>
+                          Logout
+                        </Link>
+                      </li>
+                    </ul>
                   </div>
-                </Link>
-                <div className="uk-navbar-dropdown">
-                  <ul className="uk-nav uk-navbar-dropdown-nav">
-                    <li onClick={logout}>Logout</li>
-                  </ul>
                 </div>
               </li>
             </ul>
