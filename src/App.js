@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     const { state, setUser, logout } = this;
     return (
-      <AppContext.Provider value={{ state, setUser, logout }}>
+      <AppContext.Provider value={{ ...state, setUser, logout }}>
         <div className="App">
           <NavBar user={state.user} logout={logout} />
           <Routes />
