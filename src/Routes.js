@@ -6,6 +6,7 @@ import MatchDogs from "./components/MatchDogs";
 import AuthForm from "./components/AuthForm";
 import AppHome from "./components/AppHome";
 import ProfileSi from "./components/Profile/index"
+import CreateDogForm from "./components/CreateDogForm";
 
 const Routes = () => (
   <Switch>
@@ -15,6 +16,7 @@ const Routes = () => (
     <Route exact path="/login" component={AuthForm} />
     <Route exact path="/signup" component={AuthForm} />
     <Route exact path="/profile" component={ProfileSi} />
+    <Route exact path="/create-dog" component= {CreateDogForm}/>
   </Switch>
 );
 
