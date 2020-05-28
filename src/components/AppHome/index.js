@@ -19,8 +19,10 @@ class AppHome extends Component {
     getOwnerDogs()
       .then((res) => {
         const { dogs } = res.data;
+        let target = false;
+        if (!dogs.length) target = true;
 
-        this.setState({ dogs });
+        this.setState({ dogs, target });
       })
       .catch((err) => {
         console.log(err);
@@ -33,8 +35,6 @@ class AppHome extends Component {
 
     if (dogs.length > 0) {
       history.push("/match");
-    } else {
-      this.setState({ target: true });
     }
   };
 
@@ -71,7 +71,7 @@ class AppHome extends Component {
               description="Browse dogs and find a the perfect match for your fur baby."
               // Validar si el usuario tiene un perro
               action={this.handleCheckDogs}
-              toggle={this.state.target ? "target: #modal-addDog" : ""}
+              toggle={this.state.target ? "target: #modal-addDog" : "target:"}
               background={matchBg}
             />
           </div>
