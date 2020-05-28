@@ -8,26 +8,38 @@ class CreateDogForm extends Component {
      dog: {},
   };
 
-//complete handlesubmit and handlechange
   handleChange = (e) => {
     let { dog } = this.state;
     dog = { ...dog, [e.target.name]: e.target.value};
+    console.log(dog, e.target.name)
     this.setState({ dog });
    };
  
    handleSubmit = (e) => {
      e.preventDefault();
      const { dog } = this.state;
-     dog[ "owner" ] = this.context.user._id
+     console.log("este es mi perro", dog)
+    // No se necesita porque ya se tiene la información en el backend: dog[ "owner" ] = this.context.user._id
      createDogs(dog).then((res) => {
+       //dar feedback al user npm sweet alert
      })
       .catch((res) => console.error(res.response));
+      //dar feedback tambien de error
    }
 
-  //  handleSwitch = (isAdoption) => {
-  //   const { dog } = this.state;
-  //   dog["foster"] = isAdoption
-  // }
+   handleSwitch = (type, isSelected) => {
+    const { dog } = this.state;
+    if(type === "adoption") {
+      dog["foster"] = isSelected;
+    }
+    if(type === "age") {
+      dog["age"] = isSelected;
+    }
+    if(type === "gender") {
+      dog["gender"] = isSelected;
+    }
+    this.setState({ dog }) 
+  }
 
   render() {
     return (
@@ -41,28 +53,28 @@ class CreateDogForm extends Component {
            <div className="uk-margin">
             <div className="uk-form-label"> Give up for adoption? </div>
              <div className="uk-form-controls">
-               <label><input class="uk-radio" type="radio" name="radio1"/> Yes </label><br/>
-               <label><input class="uk-radio" type="radio" name="radio1"/> No </label>
+               <label><input className="uk-radio" type="radio" name="radio1" onChange={ () => this.handleSwitch("adoption", true)}/> Yes </label><br/>
+               <label><input className="uk-radio" type="radio" name="radio1" onChange={ () => this.handleSwitch("adoption", false)}/> No </label>
              </div>
            </div>
 
-            <div className="uk-margin">
-             <label className="uk-form-label" htmlFor="name"> Name: </label>
-              <div className="uk-form-controls">
-               <input
-                 onChange={this.handleChange}
-                 className="uk-input"
-                 id="name"
-                 type="text"
-                 name="name"
-                 placeholder="Name" />
-                </div>
-              </div>
+           <div className="uk-margin">
+            <div className="uk-inline">
+              <span className="uk-form-icon" uk-icon="icon: user"></span>
+            <input
+               onChange={this.handleChange}
+               className="uk-input"
+               id="name"
+               type="text"
+               name="name"
+               placeholder=" Dog Name"/>
+            </div>
+          </div>
 
             <div className="uk-margin">
               <label className="uk-form-label" for="form-stacked-select"> Breed </label>
               <div className="uk-form-controls">
-                <select classnName="uk-select" id="form-stacked-select">
+                <select name="breed" className="uk-select" id="form-stacked-select" onChange={this.handleChange}>
                   <option selected="true">Mixed</option>
                   <option>Chihuahua</option>
                   <option>Dachshund</option>
@@ -81,32 +93,32 @@ class CreateDogForm extends Component {
            <div className="uk-margin">
             <div className="uk-form-label"> Age: </div>
              <div className="uk-form-controls">
-               <label><input class="uk-radio" type="radio" name="radio1"/> Puppy </label><br/>
-               <label><input class="uk-radio" type="radio" name="radio1"/> Adult </label><br/>
-               <label><input class="uk-radio" type="radio" name="radio1"/> Senior </label>
+               <label><input className="uk-radio" type="radio" name="radio2" onChange={ () => this.handleSwitch("age", "Puppy")}/> Puppy </label>
+               <label><input className="uk-radio" type="radio" name="radio2" onChange={ () => this.handleSwitch("age", "Adult")}/> Adult </label>
+               <label><input className="uk-radio" type="radio" name="radio2" onChange={ () => this.handleSwitch("age", "Senior")}/> Senior </label>
              </div>
            </div>
 
            <div className="uk-margin">
             <div className="uk-form-label"> Gender: </div>
              <div className="uk-form-controls">
-               <label><input class="uk-radio" type="radio" name="radio1"/> Male </label><br/>
-               <label><input class="uk-radio" type="radio" name="radio1"/> Female</label>
+               <label><input class="uk-radio" type="radio" name="radio3" onChange={ () => this.handleSwitch("gender", "Male")}/> Male </label><br/>
+               <label><input class="uk-radio" type="radio" name="radio3" onChange={ () => this.handleSwitch("gender", "Female")}/> Female</label>
              </div>
            </div>
-      
-            <div className="uk-margin">
-              <label className="uk-form-label" htmlFor="image"> Image: </label>
-                <div className="uk-form-controls">
-                  <input
-                    onChange={this.handleChange}
-                    name="image"
-                    className="uk-input"
-                    id="image"
-                    type="text"
-                    placeholder="Image"/>
-                </div>
+
+           <div className="uk-margin">
+             <div className="uk-inline">
+              <a className="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: link"></a>
+              <input 
+                onChange={this.handleChange}
+                name="image"
+                className="uk-input"
+                id="image"
+                type="text"
+                placeholder="Dog image"/>
              </div>
+           </div>
 
               <div className="uk-margin">
                 <label className="uk-form-label" htmlFor="description"> Description: </label>
@@ -117,7 +129,7 @@ class CreateDogForm extends Component {
                        name="description"
                        id="description"
                        cols="30"
-                       rows="5"></textarea>
+                       rows="3"></textarea>
                   </div>
               </div>
 
