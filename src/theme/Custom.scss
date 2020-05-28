@@ -130,6 +130,7 @@ html {
     font-weight: 500;
     font-size: $global-xmedium-font-size;
     text-transform: none;
+    max-width: 100%;
 }
 
 .floating-group {
@@ -183,6 +184,15 @@ input.uk-input {
 
 .uk-form-label {
     margin-top: 1rem;
+    font-size: 1rem;
+    color: $global-color;
+}
+
+form .uk-inline {
+    color: red;
+    text-align: left;
+    max-width: 120%;
+    width: 100%;
 }
 
 // Modal
