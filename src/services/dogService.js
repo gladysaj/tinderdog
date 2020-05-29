@@ -14,3 +14,11 @@ export const getFosterDogs = () => {
 export const createDogs = (dog) => {
     return axios.post("http://localhost:3000/api/create-dog", dog)
 };
+
+export const onlyLike = (dog) => {
+    return axios.post("http://localhost:3000/api/only-like", dog)
+};
+
+export const isMatch = (dog) => {
+    return axios.post("http://localhost:3000/api/is-match", dog)
+};
