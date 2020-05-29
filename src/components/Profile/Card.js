@@ -1,7 +1,7 @@
 import React from "react";
-
 // this is destructuring the props object e.g. props.image
 const Card = ({ image, name, phoneNumber, description }) => {
+
   return (
     <div>
       <div
@@ -14,7 +14,7 @@ const Card = ({ image, name, phoneNumber, description }) => {
               image ||
               "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"
             }
-            alt="profile picture"
+            alt="me"
             className="bg-img"
           />
         </div>

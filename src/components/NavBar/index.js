@@ -13,7 +13,7 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav">
               <li className="uk-active">
-                <Link to="/" className="uk-logo">
+                <Link to="/home" className="uk-logo">
                   <img src={logo} alt="Waggy's App" />
                 </Link>
               </li>
@@ -34,12 +34,6 @@ const NavBar = ({ user, logout }) => {
         {user._id ? (
           <div className="uk-navbar-right">
             <ul className="uk-navbar-nav">
-              <li>
-                <Link to={"/foster"}>Adopt</Link>
-              </li>
-              <li>
-                <Link to={"/match"}>Match</Link>
-              </li>
               <li>
                 <div className="uk-inline">
                   <button

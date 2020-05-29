@@ -22,3 +22,11 @@ export const onlyLike = (dog) => {
 export const isMatch = (dog) => {
     return axios.post("http://localhost:3000/api/is-match", dog)
 };
+
+export const getMyDog = () => {
+    return axios.get("http://localhost:3000/api/find-dog");
+  };
+
+export const getMatches = (dog_id) => {
+    return axios.get(`http://localhost:3000/api/my-matches/${dog_id}`)
+}

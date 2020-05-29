@@ -10,11 +10,12 @@ import CreateDogForm from "./components/CreateDogForm";
 import LandingPage from "./components/LandingPage";
 import MyMatches from "./components/Profile/MyMatches";
 import MyDog from "./components/Profile/MyDog";
+import EditProfile from "./components/Profile/EditProfile"
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={AppHome} />
-    <Route exact path="/landing" component={LandingPage} />
+    <Route exact path="/home" component={AppHome} />
+    <Route exact path="/" component={LandingPage} />
     <Route exact path="/foster" component={FosterDogs} />
     <Route exact path="/match" component={MatchDogs} />
     <Route exact path="/login" component={AuthForm} />
@@ -23,6 +24,7 @@ const Routes = () => (
     <Route exact path="/create-dog" component= {CreateDogForm}/>
     <Route exact path="/my-matches" component= {MyMatches}/>
     <Route exact path="/my-dog" component= {MyDog}/>
+    <Route exact path="/user-update/:id" component= {EditProfile}/>
   </Switch>
 );
 

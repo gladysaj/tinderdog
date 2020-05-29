@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import DogCard from "../DogCard";
-//AQUI import { getMyDog, updateMyDog } from "../../services/dogService";
+import { getMyDog } from "../../services/dogService";
 import SubNavbar from "./SubNavbar";
-import EditDogProfile from "./EditDogProfile";
 
 class MyDog extends Component {
   state = {
@@ -36,7 +35,6 @@ class MyDog extends Component {
             </div>
           </div>
         </section>
-        <EditDogProfile />
       </div>
     );
   }
