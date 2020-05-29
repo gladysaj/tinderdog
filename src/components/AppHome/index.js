@@ -50,6 +50,7 @@ class AppHome extends Component {
           id="modal-addDog"
           title="Add a dog first"
           text="To find matches for your dog, you must first have a dog, duh."
+          link="/create-dog"
           label="Add a dog"
         />
 

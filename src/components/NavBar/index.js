@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 const NavBar = ({ user, logout }) => {
   return (
@@ -12,11 +13,8 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav">
               <li className="uk-active">
-                <Link to="/">
-                  <span role="img" aria-label="dog">
-                    🐶
-                  </span>{" "}
-                  TinderDog
+                <Link to="/" className="uk-logo">
+                  <img src={logo} alt="Waggy's App" />
                 </Link>
               </li>
             </ul>
@@ -25,11 +23,8 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav">
               <li className="uk-active">
-                <Link to="/login">
-                  <span role="img" aria-label="dog">
-                    🐶
-                  </span>{" "}
-                  TinderDog
+                <Link to="/landing" className="uk-logo">
+                <img src={logo} alt="Waggy's App" />
                 </Link>
               </li>
             </ul>
@@ -48,7 +43,7 @@ const NavBar = ({ user, logout }) => {
               <li>
                 <div className="uk-inline">
                   <button
-                    className="uk-button uk-button-default uk-button-primary"
+                    className="uk-button uk-button-transparent"
                     type="button"
                   >
                     <div
@@ -58,14 +53,12 @@ const NavBar = ({ user, logout }) => {
                       <div className="uk-width-auto">
                         <img
                           className="uk-border-circle"
-                          width="40"
-                          height="40"
                           alt={user.name}
-                          src={user.profile_picture || "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"}
+                          src={user.avatar || "https://api.adorable.io/avatars/80/abott@adorable.png"}
                         />
                       </div>
                       <div className="uk-width-expand">
-                        <div className="uk-margin-remove-bottom">
+                        <div className="uk-margin-remove-bottom uk-user">
                           {user.name}
                         </div>
                       </div>
@@ -83,7 +76,6 @@ const NavBar = ({ user, logout }) => {
                         </Link>
                       </li>
 
-                      <li className="uk-nav-divider"></li>
                       <li className="uk-nav-header" onClick={logout}>
                         <Link to="">
                           <span
