@@ -14,3 +14,7 @@ export const getFosterDogs = () => {
 export const createDogs = (dog) => {
     return axios.post("http://localhost:3000/api/create-dog", dog)
 };
+
+export const updateDog = (dog) => {
+    return axios.post("http://localhost:3000/api/:id", dog)
+};

@@ -53,6 +53,11 @@ class MatchDogs extends Component {
 
   handleLike = () => {
     console.log("liked");
+
+    // Add liked dog's id to my "liked"
+    // Check if liked dog has my id in its "liked"
+    // If yes, add liked dog's id to my "match"
+    // if not, do nothing
   };
 
   render() {
@@ -65,9 +70,10 @@ class MatchDogs extends Component {
           text="You can now contact the dog's owner to arrange a meeting"
           label="Get in touch"
         />
-        <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary">
+        <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary uk-text-center">
           Match a dog
         </h1>
+        <p className="uk-text-center">Find the ideal match for your dog</p>
 
         <div className="card-container uk-margin-large-bottom">
           <DogCard
