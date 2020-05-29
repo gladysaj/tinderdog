@@ -77,7 +77,6 @@ class MatchDogs extends Component {
     if (dog.liked.find((item) => item === myDog._id)) {
       if (myDog.match.find((item) => item === dog._id)) {
         this.handleNewDog();
-        console.log("me ejecuto dentro de handleLike");
         return true;
       }
 
@@ -109,11 +108,6 @@ class MatchDogs extends Component {
         .catch((err) => console.log(err));
       console.log("me gusta");
     }
-
-    // Add liked dog's id to my "liked"
-    // Check if liked dog has my id in its "liked"
-    // If yes, add liked dog's id to my "match"
-    // if not, do nothing
   };
 
   render() {
@@ -126,6 +120,7 @@ class MatchDogs extends Component {
           title="Yay! I'ts a Match"
           text="You can now contact the dog's owner to arrange a meeting"
           label="Get in touch"
+          action="" //que se vaya a la vista de match
         />
         <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary uk-text-center">
           Match a dog

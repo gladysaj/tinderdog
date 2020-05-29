@@ -1,24 +1,25 @@
 import axios from 'axios';
+import { base_url } from "./variables";
 
 // needed to send credentials to cookie so login is not lost with url change
 axios.defaults.withCredentials = true;
 
 export const getMatchDogs = () => {
-    return axios.get("http://localhost:3000/api/match")
+    return axios.get(`${base_url}/match`)
 };
 
 export const getFosterDogs = () => {
-    return axios.get("http://localhost:3000/api/foster")
+    return axios.get(`${base_url}/foster`)
 };
   
 export const createDogs = (dog) => {
-    return axios.post("http://localhost:3000/api/create-dog", dog)
+    return axios.post(`${base_url}/create-dog`, dog)
 };
 
 export const onlyLike = (dog) => {
-    return axios.post("http://localhost:3000/api/only-like", dog)
+    return axios.post(`${base_url}/only-like`, dog)
 };
 
 export const isMatch = (dog) => {
-    return axios.post("http://localhost:3000/api/is-match", dog)
+    return axios.post(`${base_url}/is-match`, dog)
 };

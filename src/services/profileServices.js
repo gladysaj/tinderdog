@@ -1,4 +1,5 @@
 // import axios from "axios";
+import { base_url } from "./variables"; // <--- ⚠️ all routes should now use base url instead of localhost
 
 // //No funciona
 // export const getLikes = () => {
