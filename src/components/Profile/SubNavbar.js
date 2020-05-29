@@ -16,9 +16,9 @@ class SubNavbar extends Component {
             <li>
               <Link to="#">My dog</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="#">My liked dogs</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="#">My matches</Link>
             </li>

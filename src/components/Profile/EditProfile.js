@@ -11,9 +11,9 @@ class EditProfile extends Component {
   };
 
   handleChange = (e) => {
-    let { user } = this.state; 
+    let { user } = this.state;
     user = { ...user, [e.target.name]: e.target.value };
-    this.setState({ user }); 
+    this.setState({ user });
   };
 
   componentDidMount() {
@@ -22,26 +22,28 @@ class EditProfile extends Component {
     this.setState({ user });
   }
 
-  handleSubmit = () => {
+  handleSubmit = (e) => {
+    e.preventDefault();
     let { user } = this.state;
+    console.log("este es mi usuario", user);
     updateUser(user)
       .then((res) => {
         const { user } = res.data;
         localStorage.setItem("user", JSON.stringify(user));
-
         this.context.setUser(user);
+        console.log("user successfully updated!");
 
         //usuario esta actualizado (feedback)
         //tenemos que usar la funcion setUser del context para actualizar el usuario en el context
       })
-      .catch();
+      .catch((res) => console.error(res.response));
   };
 
   render() {
     let { user } = this.state;
     return (
       <div>
-        <Card image="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png" />
+        <Card image={user.avatar} name={user.name} phoneNumber={user.phoneNumber} description={user.description}/>
 
         <div className="uk-column-1-2 uk-column-divider">
           <form onSubmit={this.handleSubmit} className="uk-form-stacked ">
@@ -59,14 +61,12 @@ class EditProfile extends Component {
                   id="avatar"
                   name="avatar"
                   className="uk-input"
-                  type="text"
-                  placeholder="URL"
+                  type="url"
                   required
+                  placeholder="URL"
                 />
               </div>
             </div>
-          </form>
-          <form onSubmit={this.handleSubmit} className="uk-form-stacked ">
             <div className="uk-padding-small">
               <label className="uk-form-label" htmlFor="name">
                 Name:
@@ -77,9 +77,9 @@ class EditProfile extends Component {
                   uk-icon="icon: pencil"
                 ></span>
                 <input
+                  name="name"
                   onChange={this.handleChange}
                   id="name"
-                  name="name"
                   className="uk-input"
                   type="text"
                   required
@@ -134,12 +134,12 @@ class EditProfile extends Component {
                 />
               </div>
             </div>
+            <div className="uk-column-span uk-padding-large">
+              <button className="uk-button uk-button-primary uk-width-1-4">
+                Update
+              </button>
+            </div>
           </form>
-          <div className="uk-column-span uk-padding-large">
-            <button className="uk-button uk-button-primary uk-width-1-4">
-              Update
-            </button>
-          </div>
         </div>
       </div>
     );

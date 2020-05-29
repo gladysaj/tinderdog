@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import EditProfile from "./EditProfile"
 import SubNavbar from "./SubNavbar";
 
-class ProfileSi extends Component {
-  state = {
-    matches: [],
-    likes: []
-  }
+class Profile extends Component {
   render() {
     return (
       <div>
@@ -17,4 +13,4 @@ class ProfileSi extends Component {
   }
 }
 
-export default ProfileSi;
+export default Profile;
