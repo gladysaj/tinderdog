@@ -69,13 +69,6 @@ class MatchDogs extends Component {
           Match a dog
         </h1>
 
-        {/* <ActionCard
-          {...dog}
-          gender={this.state.dog.gender === "Female" ? "♀" : "♂"}
-          refreshDog={this.handleNewDog}
-          like={console.log("liked")}
-        /> */}
-
         <div className="card-container uk-margin-large-bottom">
           <DogCard
             {...dog}
