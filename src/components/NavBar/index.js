@@ -48,7 +48,7 @@ const NavBar = ({ user, logout }) => {
               <li>
                 <div className="uk-inline">
                   <button
-                    className="uk-button uk-button-default uk-button-primary"
+                    className="uk-button uk-button-transparent"
                     type="button"
                   >
                     <div
@@ -58,14 +58,12 @@ const NavBar = ({ user, logout }) => {
                       <div className="uk-width-auto">
                         <img
                           className="uk-border-circle"
-                          width="40"
-                          height="40"
                           alt={user.name}
-                          src={user.profile_picture || "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"}
+                          src={user.avatar || "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"}
                         />
                       </div>
                       <div className="uk-width-expand">
-                        <div className="uk-margin-remove-bottom">
+                        <div className="uk-margin-remove-bottom uk-user">
                           {user.name}
                         </div>
                       </div>
@@ -83,7 +81,6 @@ const NavBar = ({ user, logout }) => {
                         </Link>
                       </li>
 
-                      <li className="uk-nav-divider"></li>
                       <li className="uk-nav-header" onClick={logout}>
                         <Link to="">
                           <span
