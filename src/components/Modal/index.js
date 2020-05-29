@@ -17,7 +17,7 @@ class Modal extends Component {
             {this.props.text}
           </p>
           <p className="uk-text-center">
-            <Link to="" className="uk-button uk-button-primary">
+            <Link to={this.props.link} className="uk-button uk-button-primary">
               {this.props.label}
             </Link>
           </p>

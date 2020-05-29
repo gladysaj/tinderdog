@@ -22,6 +22,8 @@ $global-muted-color: #424f5c !default;
 $global-link-color: #1e87f0 !default;
 $global-link-hover-color: #0f6ecd !default;
 
+$global-inverse-color: #fff;
+
 // BG Color
 $global-background: #fff !default;
 
@@ -188,6 +190,10 @@ svg polyline {
     color: $global-secondary-background !important;
 }
 
+.uk-logo img {
+    width: 132px;
+}
+
 // Inputs
 input.uk-input {
     padding: 1.5rem;
@@ -228,4 +234,29 @@ form .uk-inline {
     height: 40px;
     width: 40px;
     object-fit: cover;
+}
+
+// Cover
+.uk-cover-container.uk-hero {
+    background: #100f1b;
+    height: 91vh;
+}
+
+.uk-cover-container.uk-hero video {
+    opacity: 0.35;
+}
+
+.uk-cover-container.uk-hero h1 {
+    font-size: 3.75rem;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.uk-cover-container.uk-hero a {
+    background: $global-emphasis-color !important;
+    color: #FFF !important;
+    box-shadow: $global-large-box-shadow;
+}
+
+.uk-cover-container.uk-hero p {
+    font-size: 1.25rem;
 }

@@ -7,10 +7,12 @@ import AuthForm from "./components/AuthForm";
 import AppHome from "./components/AppHome";
 import ProfileSi from "./components/Profile/index"
 import CreateDogForm from "./components/CreateDogForm";
+import LandingPage from "./components/LandingPage";
 
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={AppHome} />
+    <Route exact path="/landing" component={LandingPage} />
     <Route exact path="/foster" component={FosterDogs} />
     <Route exact path="/match" component={MatchDogs} />
     <Route exact path="/login" component={AuthForm} />

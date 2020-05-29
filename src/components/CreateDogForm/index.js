@@ -109,7 +109,7 @@ class CreateDogForm extends Component {
 
            <div className="uk-margin">
              <div className="uk-inline">
-              <a className="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: link"></a>
+              <span className="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: link"></span>
               <input 
                 onChange={this.handleChange}
                 name="image"
