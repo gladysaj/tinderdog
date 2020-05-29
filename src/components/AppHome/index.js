@@ -43,6 +43,11 @@ class AppHome extends Component {
     history.push("/foster");
   };
 
+  handleModal = () => {
+    const { history } = this.props;
+    history.push("/create-dog");
+  };
+
   render() {
     return (
       <div>
@@ -50,7 +55,7 @@ class AppHome extends Component {
           id="modal-addDog"
           title="Add a dog first"
           text="To find matches for your dog, you must first have a dog, duh."
-          link="/create-dog"
+          action={this.handleModal}
           label="Add a dog"
         />
 

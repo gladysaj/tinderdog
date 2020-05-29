@@ -8,6 +8,7 @@ class Modal extends Component {
         id={this.props.id}
         className="uk-margin-auto-vertical"
         uk-modal="true"
+        uk-toggle="true"
       >
         <div className="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
           <h2 className="uk-modal-title uk-text-bold uk-text-center">
@@ -17,9 +18,9 @@ class Modal extends Component {
             {this.props.text}
           </p>
           <p className="uk-text-center">
-            <Link to={this.props.link} className="uk-button uk-button-primary">
+            <button onClick={this.props.action} className="uk-button uk-button-primary">
               {this.props.label}
-            </Link>
+            </button>
           </p>
         </div>
       </div>
