@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { getMatchDogs } from "../../services/dogService";
+import { getMatchDogs, onlyLike, isMatch } from "../../services/dogService";
 import Modal from "../Modal";
 import DogCard from "../DogCard";
 import FloatingAction from "../FloatingAction";
+import { getOwnerDogs } from "../../services/userService";
 
 class MatchDogs extends Component {
   state = {
     dog: {},
+    myDog: {},
     data: [],
     randomDogId: "",
     dogsShown: [],
@@ -23,6 +25,13 @@ class MatchDogs extends Component {
         gender: res.data,
       });
     });
+
+    getOwnerDogs()
+      .then((res) => {
+        let myDog = res.data.dogs[0];
+        this.setState({ myDog });
+      })
+      .catch((err) => console.log(err));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,9 +49,16 @@ class MatchDogs extends Component {
   }
 
   handleNewDog = () => {
+    let { myDog } = this.state;
     let randomDog = this.state.dogsShown[
       Math.floor(Math.random() * this.state.dogsShown.length)
     ];
+
+    if (randomDog.match.find((item) => item === myDog._id)) {
+      this.handleNewDog();
+      console.log("me ejecuto si tengo match");
+      return true;
+    }
 
     const filter = this.state.dogsShown.filter(
       (dog) => dog._id !== randomDog._id
@@ -52,7 +68,47 @@ class MatchDogs extends Component {
   };
 
   handleLike = () => {
-    console.log("liked");
+    let { dog, myDog } = this.state;
+    let data = {
+      myDogId: myDog._id,
+      likedDogId: dog._id,
+    };
+
+    if (dog.liked.find((item) => item === myDog._id)) {
+      if (myDog.match.find((item) => item === dog._id)) {
+        this.handleNewDog();
+        console.log("me ejecuto dentro de handleLike");
+        return true;
+      }
+
+      isMatch(data)
+        .then((res) => {
+          myDog = res.data.dog;
+          this.handleNewDog();
+          this.setState({ myDog });
+
+          // Agregar alerta de que hubo match
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      if (myDog.liked.find((item) => item === dog._id)) {
+        this.handleNewDog();
+        return true;
+      }
+
+      onlyLike(data)
+        .then((res) => {
+          myDog = res.data.dog;
+          this.handleNewDog();
+          this.setState({ myDog });
+
+          // Agregar alerta de que likeaste
+          console.log(res);
+        })
+        .catch((err) => console.log(err));
+      console.log("me gusta");
+    }
 
     // Add liked dog's id to my "liked"
     // Check if liked dog has my id in its "liked"
@@ -62,6 +118,7 @@ class MatchDogs extends Component {
 
   render() {
     const { dog } = this.state;
+    console.log(dog);
     return (
       <section>
         <Modal
@@ -86,7 +143,7 @@ class MatchDogs extends Component {
             <FloatingAction
               icon="heart"
               action={this.handleLike}
-              toggle="target: #modal-success"
+              // toggle="target: #modal-success"
             />
           </div>
         </div>
