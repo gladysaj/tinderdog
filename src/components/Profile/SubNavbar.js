@@ -14,7 +14,7 @@ class SubNavbar extends Component {
               <Link to="/profile">Edit Profile</Link>
             </li>
             <li>
-              <Link to="#">My dog</Link>
+              <Link to="/profile/dog">My dog</Link>
             </li>
             <li>
               <Link to="#">My liked dogs</Link>

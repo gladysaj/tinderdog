@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Swal from 'sweetalert2';
+import { withRouter } from 'react-router-dom';
+
 import { createDogs } from "../../services/dogService";
 import AppContext from "../../AppContext";
 
@@ -18,14 +21,27 @@ class CreateDogForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { dog } = this.state;
-    console.log("este es mi perro", dog);
     // No se necesita porque ya se tiene la información en el backend: dog[ "owner" ] = this.context.user._id
     createDogs(dog)
       .then((res) => {
-        //dar feedback al user npm sweet alert
+        //dar feedback al user npm sweet alert de que se pudo crear el perro y enviar a la ruta profile /my dog
+        Swal.fire({
+          title: 'Congratulations! 🎉',
+          text: `You've just created your dog, now go to its profile!`,
+          confirmButtonText: 'OK'
+        }).then(result => {
+          this.props.history.push('/profile/dog');
+        });
       })
-      .catch((res) => console.error(res.response));
-    //dar feedback tambien de error
+      .catch((err) => {
+        //dar feedback tambien de error que no se pudo crear el perro
+        const expectedMsg = 'You have a dog already';
+        if (err.response && err.response.data && err.response.data.msg === expectedMsg) {
+          Swal.fire('Oops...', 'You can only have one dog!', 'error');
+        } else {
+          Swal.fire('Oops...', 'There has been an error, try again.', 'error');
+        }
+      });
   };
 
   handleSwitch = (type, isSelected) => {
@@ -228,4 +244,4 @@ class CreateDogForm extends Component {
 
 CreateDogForm.contextType = AppContext;
 
-export default CreateDogForm;
+export default withRouter(CreateDogForm);
