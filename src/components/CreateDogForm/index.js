@@ -109,7 +109,7 @@ class CreateDogForm extends Component {
                     <br />
                     <label>
                       <input
-                        checked="checked"
+                        // checked="checked"
                         className="uk-radio"
                         type="radio"
                         name="radio2"
@@ -145,7 +145,7 @@ class CreateDogForm extends Component {
                     <br />
                     <label>
                       <input
-                        checked="checked"
+                        // checked="checked"
                         class="uk-radio"
                         type="radio"
                         name="radio3"
@@ -171,7 +171,7 @@ class CreateDogForm extends Component {
                     <br />
                     <label>
                       <input
-                        checked="checked"
+                        // checked="checked"
                         className="uk-radio"
                         type="radio"
                         name="radio1"

@@ -14,3 +14,13 @@ export const getFosterDogs = () => {
 export const createDogs = (dog) => {
     return axios.post("http://localhost:3000/api/create-dog", dog)
 };
+
+//COMO ESTABA
+// export const getMyDog = () => {
+//     return axios.get("http://localhost:3000/api/get-dogs")
+// } 
+
+//CAMBIO QUE HICE
+export const getMyDog = () => {
+    return axios.get("http://localhost:3000/api/find-dog")
+}

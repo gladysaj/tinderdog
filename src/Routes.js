@@ -5,9 +5,11 @@ import FosterDogs from "./components/FosterDogs";
 import MatchDogs from "./components/MatchDogs";
 import AuthForm from "./components/AuthForm";
 import AppHome from "./components/AppHome";
-import ProfileSi from "./components/Profile/index"
+import Profile from "./components/Profile/index"
 import CreateDogForm from "./components/CreateDogForm";
 import LandingPage from "./components/LandingPage";
+import MyMatches from "./components/Profile/MyMatches";
+import MyDog from "./components/Profile/MyDog";
 
 const Routes = () => (
   <Switch>
@@ -17,8 +19,10 @@ const Routes = () => (
     <Route exact path="/match" component={MatchDogs} />
     <Route exact path="/login" component={AuthForm} />
     <Route exact path="/signup" component={AuthForm} />
-    <Route exact path="/profile" component={ProfileSi} />
+    <Route exact path="/profile" component={Profile} />
     <Route exact path="/create-dog" component= {CreateDogForm}/>
+    <Route exact path="/my-matches" component= {MyMatches}/>
+    <Route exact path="/my-dog" component= {MyDog}/>
   </Switch>
 );
 
