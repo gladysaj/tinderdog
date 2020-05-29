@@ -8,8 +8,8 @@ const Card = ({ image, name, phoneNumber, description }) => {
         className="uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin uk-margin-xlarge-left uk-margin-xlarge-right"
         uk-grid="true "
       >
-        <div className=" uk-container uk-first-column uk-card-body">
-          <img src={image} alt="profile picture" className="bg-img" />
+        <div className="uk-container uk-first-column uk-card-body">
+          <img src={image} alt="" className="bg-img" />
         </div>
         <div>
           <div className="uk-card-body uk-container">

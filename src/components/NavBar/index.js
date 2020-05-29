@@ -14,7 +14,7 @@ const NavBar = ({ user, logout }) => {
             <ul className="uk-navbar-nav">
               <li className="uk-active">
                 <Link to="/" className="uk-logo">
-                  <img src={logo} />
+                  <img src={logo} alt="Waggy's App" />
                 </Link>
               </li>
             </ul>
@@ -23,11 +23,8 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav">
               <li className="uk-active">
-                <Link to="/login">
-                  <span role="img" aria-label="dog">
-                    🐶
-                  </span>{" "}
-                  TinderDog
+                <Link to="/landing" className="uk-logo">
+                <img src={logo} alt="Waggy's App" />
                 </Link>
               </li>
             </ul>
@@ -57,7 +54,7 @@ const NavBar = ({ user, logout }) => {
                         <img
                           className="uk-border-circle"
                           alt={user.name}
-                          src={user.avatar || "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"}
+                          src={user.avatar || "https://api.adorable.io/avatars/80/abott@adorable.png"}
                         />
                       </div>
                       <div className="uk-width-expand">
