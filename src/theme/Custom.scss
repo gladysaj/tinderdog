@@ -60,10 +60,13 @@ $global-border: #cacaee !default;
 @import "uikit/src/scss/uikit-theme.scss";
 
 // Other general styles
-html {
+body {
     background-color: $global-muted-background;
     background-image: url(../assets/body.png);
     background-size: cover;
+    background-attachment: fixed;
+    height: auto;
+    min-height: 100vh;
 }
 
 // Type

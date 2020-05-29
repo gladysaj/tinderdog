@@ -1,16 +1,37 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { spring, AnimatedSwitch } from "react-router-transition";
 
 import FosterDogs from "./components/FosterDogs";
 import MatchDogs from "./components/MatchDogs";
 import AuthForm from "./components/AuthForm";
 import AppHome from "./components/AppHome";
-import ProfileSi from "./components/Profile/index"
+import ProfileSi from "./components/Profile/index";
 import CreateDogForm from "./components/CreateDogForm";
 import LandingPage from "./components/LandingPage";
 
+// wrap the `spring` helper to use a bouncy config
+function bounce(val) {
+  return spring(val, {
+    stiffness: 110,
+    damping: 20,
+  });
+}
+
 const Routes = () => (
-  <Switch>
+  <AnimatedSwitch
+    atEnter={{ opacity: 0 }}
+    atLeave={{ opacity: bounce(0) }}
+    atActive={{ opacity: bounce(1) }}
+    mapStyles={(styles) => {
+      return {
+        position: styles.opacity === 1 ? undefined : "absolute",
+        width: styles.opacity === 1 ? undefined : "100%",
+        height: styles.opacity === 1 ? undefined : "100%",
+        opacity: styles.opacity,
+      };
+    }}
+  >
     <Route exact path="/" component={AppHome} />
     <Route exact path="/landing" component={LandingPage} />
     <Route exact path="/foster" component={FosterDogs} />
@@ -18,8 +39,8 @@ const Routes = () => (
     <Route exact path="/login" component={AuthForm} />
     <Route exact path="/signup" component={AuthForm} />
     <Route exact path="/profile" component={ProfileSi} />
-    <Route exact path="/create-dog" component= {CreateDogForm}/>
-  </Switch>
+    <Route exact path="/create-dog" component={CreateDogForm} />
+  </AnimatedSwitch>
 );
 
 export default Routes;
