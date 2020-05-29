@@ -49,16 +49,10 @@ class FosterDogs extends Component {
     const { dog } = this.state;
     return (
       <section>
-        <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary">
+        <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary uk-text-center">
           Adopt a Dog
         </h1>
-
-        {/* <ActionCard
-          {...dog}
-          gender={this.state.dog.gender === "Female" ? "♀" : "♂"}
-          refreshDog={this.handleNewDog}
-          like=""
-        /> */}
+        <p className="uk-text-center">Find the ideal doggie to take home</p>
 
         <div className="card-container uk-margin-large-bottom">
           <DogCard
