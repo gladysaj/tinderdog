@@ -28,20 +28,16 @@ class MyMatches extends Component {
       <div>
         <SubNavbar />
         <section>
-          <div className="uk-flex uk-flex-between">
-            <div>
-              {this.state.matches.length > 0 ? (
-                <div>
-                  {this.state.matches.map((match, index) => (
-                    <DogCard key={index} {...match} />
-                  ))}
-                </div>
-              ) : (
-                <div className="uk-alert-primary" uk-alert="true">
-                  <h1>No matches</h1>
-                </div>
-              )}
-            </div>
+          <div className="">
+            {this.state.matches.length > 0 ? (
+              <div>
+                {this.state.matches.map((match, index) => (
+                  <DogCard key={index} {...match} />
+                ))}
+              </div>
+            ) : (
+              <h1 className="uk-text-center">No matches</h1>
+            )}
           </div>
         </section>
       </div>
