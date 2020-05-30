@@ -29,15 +29,19 @@ class MyMatches extends Component {
         <SubNavbar />
         <section>
           <div>
-            {this.state.matches.length > 0 ? (
-              <div>
-                {this.state.matches.map((match, index) => (
-                  <DogCard key={index} {...match} />
-                ))}
-              </div>
-            ) : (
-              <h1 className="uk-text-center">No matches</h1>
-            )}
+            <div>
+              {this.state.matches.length > 0 ? (
+                <div>
+                  {this.state.matches.map((match, index) => (
+                    <DogCard key={index} {...match} />
+                  ))}
+                </div>
+              ) : (
+                <div>
+                  <h1 className="uk-text-center">No matches</h1>
+                </div>
+              )}
+            </div>
           </div>
         </section>
       </div>
