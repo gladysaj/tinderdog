@@ -23,3 +23,7 @@ export const onlyLike = (dog) => {
 export const isMatch = (dog) => {
     return axios.post(`${base_url}/is-match`, dog)
 };
+
+export const myDog = () => {
+    return axios.post("http://localhost:3000/api/profile-dog")
+};
