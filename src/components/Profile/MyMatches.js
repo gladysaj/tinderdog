@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DogCard from "../DogCard";
-import { getMatches, getMyDog } from "../../services/dogService"; //ESTOY USANDO ESTE SERVICIO COMO PRUEBA PORQUE NO SIRVE MATCH
+import { getMatches, getMyDog } from "../../services/dogService"; 
 import SubNavbar from "./SubNavbar";
 
 class MyMatches extends Component {
