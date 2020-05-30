@@ -1,43 +1,71 @@
-import React, { Component } from "react";
-import DogCard from "../DogCard";
-import { getMyDog } from "../../services/dogService";
-import SubNavbar from "./SubNavbar";
+import React from "react";
+import axios from 'axios';
+import { withRouter } from 'react-router';
+import Swal from 'sweetalert2';
 
-class MyDog extends Component {
+import DogProfile from '../DogProfile';
+
+class MyDog extends React.Component {
   state = {
-    dogs: [],
-  };
+    image: '',
+    name: '',
+    breed: '',
+    age: '',
+    description: '',
+    gender: '',
+    hasDog: undefined,
+  }
 
   componentDidMount() {
-    getMyDog().then((res) => {
-      console.log(res);
-      const { dogs } = res.data;
-      this.setState({ dogs });
+    axios.get('http://localhost:3000/api/profile-dog').then((response) => {
+      const { data } = response;
+
+      this.setState({
+        hasDog: true,
+        image: data.image,
+        name: data.name,
+        breed: data.breed,
+        age: data.age,
+        description: data.description,
+        gender: data.gender,
+      });
+    }).catch(error => {
+      this.setState({ hasDog: false });
     });
   }
 
+  showDog() {
+    const { hasDog } = this.state;
+
+    if (hasDog === true) {
+      return (
+        <DogProfile
+          image={this.state.image}
+          name={this.state.name}
+          breed={this.state.breed}
+          age={this.state.age}
+          description={this.state.description}
+          gender={this.state.gender}
+        />
+      )
+    } else if (hasDog === false) {
+      Swal.fire({
+        title: "You don't have any dog!",
+        text: "Sorry, you need to add a dog to see this section.",
+        confirmButtonText: "Add my dog",
+      }).then((result) => {
+        this.props.history.push("/create-dog");
+      });
+      this.setState({ hasDog: undefined });
+      return null;
+    } else {
+      return null;
+    }
+  }
+
   render() {
-    return (
-      <div>
-        <SubNavbar />
-        <section className="uk-section">
-          <div className="uk-container">
-            <div>
-              {this.state.dogs.length > 0 ? (
-                this.state.dogs.map((dog, index) => (
-                  <DogCard key={index} {...dog} />
-                ))
-              ) : (
-                <div className="uk-alert-primary" uk-alert="true">
-                  <h1>Aun no has dado un perro de alta</h1>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      </div>
-    );
+    return this.showDog()
   }
 }
 
-export default MyDog;
+export default withRouter(MyDog);

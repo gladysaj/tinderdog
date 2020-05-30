@@ -31,3 +31,7 @@ export const getMyDog = () => {
 export const getMatches = (dog_id) => {
     return axios.get(`${base_url}/my-matches/${dog_id}`)
 } 
+
+export const myDog = () => {
+    return axios.post("http://localhost:3000/api/profile-dog")
+}
