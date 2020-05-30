@@ -20,7 +20,10 @@ class MatchDogs extends Component {
     getMatchDogs().then((res) => {
       let randomDog = res.data[Math.floor(Math.random() * res.data.length)];
 
+      const currentCard = <DogCard {...randomDog} />;
+
       this.setState({
+        currentCard,
         dog: randomDog,
         data: res.data,
         dogsShown: res.data,
@@ -58,7 +61,6 @@ class MatchDogs extends Component {
 
     if (randomDog.match.find((item) => item === myDog._id)) {
       this.handleNewDog();
-      console.log("me ejecuto si tengo match");
       return true;
     }
 
@@ -66,7 +68,9 @@ class MatchDogs extends Component {
       (dog) => dog._id !== randomDog._id
     );
 
-    this.setState({ dog: randomDog, dogShown: filter });
+    const currentCard = <DogCard key={Math.random()} {...randomDog} />;
+
+    this.setState({ dog: randomDog, dogShown: filter, currentCard });
   };
 
   handleLike = () => {
@@ -90,12 +94,10 @@ class MatchDogs extends Component {
           Swal.fire({
             title: "Yay! It's a match!",
             text: "Checkout your matches.",
-            confirmButtonText: "Matches",
+            confirmButtonText: "See your Matches",
           }).then((result) => {
             this.props.history.push("/my-matches");
           });
-          // Agregar alerta de que hubo match
-          console.log(res);
         })
         .catch((err) => console.log(err));
     } else {
@@ -109,18 +111,12 @@ class MatchDogs extends Component {
           myDog = res.data.dog;
           this.handleNewDog();
           this.setState({ myDog });
-
-          // Agregar alerta de que likeaste
-          console.log(res);
         })
         .catch((err) => console.log(err));
-      console.log("me gusta");
     }
   };
 
   render() {
-    const { dog } = this.state;
-    console.log(dog);
     return (
       <section>
         <Modal
@@ -136,10 +132,7 @@ class MatchDogs extends Component {
         <p className="uk-text-center">Find the ideal match for your dog</p>
 
         <div className="card-container uk-margin-large-bottom">
-          <DogCard
-            {...dog}
-            gender={this.state.dog.gender === "Female" ? "♀" : "♂"}
-          />
+          {this.state.currentCard}
 
           <div className="uk-button-group floating-group uk-position-bottom-center">
             <FloatingAction icon="refresh" action={this.handleNewDog} />

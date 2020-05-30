@@ -24,13 +24,11 @@ class EditProfile extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let { user } = this.state;
-    console.log("este es mi usuario", user);
     updateUser(user)
       .then((res) => {
         const { result } = res.data;
         localStorage.setItem("user", JSON.stringify(result));
         this.context.setUser(result);
-        console.log("user successfully updated!", res);
 
         //usuario esta actualizado (feedback)
         //tenemos que usar la funcion setUser del context para actualizar el usuario en el context

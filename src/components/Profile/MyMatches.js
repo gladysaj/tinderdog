@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
+
 import DogCard from "../DogCard";
 import { getMatches, getMyDog } from "../../services/dogService";
 import SubNavbar from "./SubNavbar";
+import { base_url } from "../../services/variables";
 
 class MyMatches extends Component {
   state = {
@@ -11,17 +14,40 @@ class MyMatches extends Component {
   componentDidMount() {
     getMyDog()
       .then((res) => {
-        console.log(res);
         getMatches(res.data.dogs[0]._id)
           .then((res) => {
-            console.log(res);
             const { result } = res.data;
-            this.setState({ matches: result.match });
+
+            result.match.map(match => {
+              axios.post(`${base_url}/owner`, {
+                owner: match.owner
+              }).then(result => {
+                console.log(result);
+                if (result.data && result.data.name && result.data.phoneNumber) {
+                  const { name, phoneNumber } = result.data;
+                  this.setState(prevState => {
+                    return {
+                      ...prevState,
+                      matches: [{ ...match, ownerName: name, ownerPhone: phoneNumber }]
+                    }
+                  });
+                } else {
+                  this.setState(prevState => {
+                    return {
+                      ...prevState,
+                      matches: [{ ...match }]
+                    }
+                  });
+                }
+              }).catch(err => console.log(err));
+            });
           })
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   }
+
+
 
   render() {
     return (
