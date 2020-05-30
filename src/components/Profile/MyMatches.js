@@ -27,14 +27,15 @@ class MyMatches extends Component {
                   const { name, phoneNumber } = result.data;
                   console.log('match', match);
                   this.setState(prevState => {
+                    const newMatch = { ...match, ownerName: name, ownerPhone: phoneNumber };
                     return {
-                      matches: [{ ...prevState.matches, ...match, ownerName: name, ownerPhone: phoneNumber }]
+                      matches: [...prevState.matches, newMatch]
                     }
                   });
                 } else {
                   this.setState(prevState => {
                     return {
-                      matches: [{ ...prevState.matches, ...match }]
+                      matches: [...prevState.matches, match]
                     }
                   });
                 }
