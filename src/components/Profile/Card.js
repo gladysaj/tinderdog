@@ -1,35 +1,32 @@
 import React from "react";
 
 // this is destructuring the props object e.g. props.image
-const Card = ({ image, name, phoneNumber, description }) => {
+const Card = ({ image, name, email, phoneNumber, description }) => {
   return (
-    <div>
-      <div
-        className="uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin uk-margin-xlarge-left uk-margin-xlarge-right"
-        uk-grid="true "
-      >
-        <div className="uk-container uk-first-column uk-card-body">
-          <img
-            src={
-              image ||
-              "https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png"
-            }
-            alt="me"
-            className="bg-img"
-          />{" "}
-        </div>
-        <div>
-          <div className="uk-card-body uk-container">
-            <h3 className="uk-text-justify">{"Name:"}</h3>
-            <p className="uk-text-justify">{name}</p>
-            <h3 className="uk-text-justify">{"Phone number:"}</h3>
-            <p className="uk-text-justify">{phoneNumber}</p>
-            <h3 className="uk-text-justify">{"About Me:"}</h3>
-            <p className="uk-text-justify">
-              {description || "Add a description..."}
+    <div className="uk-width-1-3@m uk-width-1-2@s uk-align-center uk-padding-small uk-text-left uk-background-default uk-round uk-margin-small-top">
+      <div className="uk-card-header">
+        <div className="uk-grid-small uk-flex-middle" uk-grid="true">
+          <div className="uk-width-auto">
+            <img
+              className="uk-border-circle"
+              width="40"
+              height="40"
+              src={
+                image || "https://api.adorable.io/avatars/80/abott@adorable.png"
+              }
+              alt="User"
+            />
+          </div>
+          <div className="uk-width-expand">
+            <h3 className="uk-card-title uk-margin-remove-bottom">{name}</h3>
+            <p className="uk-text-meta uk-margin-remove-top">
+              {email} / {phoneNumber}
             </p>
           </div>
         </div>
+      </div>
+      <div className="uk-card-body">
+        <p>{description || "Add a description..."}</p>
       </div>
     </div>
   );
