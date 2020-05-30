@@ -37,8 +37,8 @@ class MyMatches extends Component {
                   ))}
                 </div>
               ) : (
-                <div className="uk-alert-primary" uk-alert="true">
-                  <h1>No matches</h1>
+                <div>
+                  <h1 className="uk-text-center">No matches</h1>
                 </div>
               )}
             </div>
