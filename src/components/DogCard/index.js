@@ -10,7 +10,7 @@ const DogCard = ({ image, name, breed, age, description, gender, ownerName, owne
       <div>
         <div className="uk-card uk-card-default uk-cover-container">
           <div className="uk-card-body uk-light uk-margin-xxlarge-top uk-overlay">
-            <h2 className="uk-text-bold uk-text-left uk-text-xlarge">{name} {gender}</h2>
+            <h2 className="uk-text-bold uk-text-left uk-text-xlarge">{name} {gender === "Female" ? "♀" : "♂"}</h2>
             {ownerName && ownerPhone ? (
               <h5 className="uk-text-bold uk-text-left uk-text-xlarge">Owner: {ownerName}<br />Phone: {ownerPhone}</h5>
             ) : null}
