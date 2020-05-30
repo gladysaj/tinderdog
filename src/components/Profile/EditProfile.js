@@ -45,6 +45,7 @@ class EditProfile extends Component {
         <Card
           image={user.avatar}
           name={user.name}
+          email={user.email}
           phoneNumber={user.phoneNumber}
           description={user.description}
         />
