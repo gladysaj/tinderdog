@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DogCard from "../DogCard";
-import { getMatches, getMyDog } from "../../services/dogService"; 
+import { getMatches, getMyDog } from "../../services/dogService";
 import SubNavbar from "./SubNavbar";
 
 class MyMatches extends Component {
@@ -16,21 +16,20 @@ class MyMatches extends Component {
           .then((res) => {
             console.log(res);
             const { result } = res.data;
-            this.setState({ matches: result.match })
+            this.setState({ matches: result.match });
           })
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
-
   }
 
   render() {
     return (
       <div>
         <SubNavbar />
-        <section >
-          <div className="uk-flex uk-flex-between">
-            <div >
+        <section>
+          <div>
+            <div>
               {this.state.matches.length > 0 ? (
                 <div>
                   {this.state.matches.map((match, index) => (

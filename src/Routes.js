@@ -36,8 +36,8 @@ const Routes = () => (
       };
     }}
   >
-    <Route exact path="/" component={AppHome} />
-    <Route exact path="/landing" component={LandingPage} />
+    <Route exact path="/home" component={AppHome} />
+    <Route exact path="/" component={LandingPage} />
     <Route exact path="/foster" component={FosterDogs} />
     <Route exact path="/match" component={MatchDogs} />
     <Route exact path="/login" component={AuthForm} />

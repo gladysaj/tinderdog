@@ -23,7 +23,7 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav">
               <li className="uk-active">
-                <Link to="/login" className="uk-logo">
+                <Link to="/" className="uk-logo">
                 <img src={logo} alt="Waggy's App" />
                 </Link>
               </li>
