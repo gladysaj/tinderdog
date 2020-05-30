@@ -14,6 +14,7 @@ class MatchDogs extends Component {
     data: [],
     randomDogId: "",
     dogsShown: [],
+    previousDog: undefined,
   };
 
   componentDidMount() {
@@ -25,6 +26,7 @@ class MatchDogs extends Component {
         data: res.data,
         dogsShown: res.data,
         gender: res.data,
+        previousDog: randomDog._id,
       });
     });
 
@@ -51,10 +53,20 @@ class MatchDogs extends Component {
   }
 
   handleNewDog = () => {
-    let { myDog } = this.state;
-    let randomDog = this.state.dogsShown[
-      Math.floor(Math.random() * this.state.dogsShown.length)
-    ];
+    let { myDog, previousDog } = this.state;
+
+    let newDog = false;
+    let randomDog = undefined;
+
+    while (!newDog) {
+      randomDog = this.state.dogsShown[
+        Math.floor(Math.random() * this.state.dogsShown.length)
+      ];
+      if (randomDog._id !== previousDog) {
+        newDog = true;
+        this.setState({ previousDog: randomDog._id });
+      }
+    }
 
     if (randomDog.match.find((item) => item === myDog._id)) {
       this.handleNewDog();
@@ -89,7 +101,7 @@ class MatchDogs extends Component {
           Swal.fire({
             title: "Yay! It's a match!",
             text: "Checkout your matches.",
-            confirmButtonText: "Matches",
+            confirmButtonText: "See your Matches",
           }).then((result) => {
             this.props.history.push("/my-matches");
           });

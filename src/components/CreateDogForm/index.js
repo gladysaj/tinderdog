@@ -27,7 +27,7 @@ class CreateDogForm extends Component {
           text: `You've just created your dog, now go to its profile!`,
           confirmButtonText: "OK",
         }).then((result) => {
-          this.props.history.push("/profile/dog");
+          this.props.history.push("/my-dog");
         });
       })
       .catch((err) => {
