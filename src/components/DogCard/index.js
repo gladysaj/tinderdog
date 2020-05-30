@@ -4,7 +4,7 @@ import React from "react";
 const DogCard = ({ image, name, breed, age, description, gender }) => {
   return (
     <div
-      className="uk-child-width-1-3@m uk-child-width-1-2@s uk-flex-center uk-padding-small uk-text-left"
+      className="uk-child-width-1-3@m uk-child-width-1-2@s uk-flex-center uk-padding-small uk-text-left uk-card"
       uk-grid="true"
     >
       <div>
