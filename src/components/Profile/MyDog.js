@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import Swal from 'sweetalert2';
 
 import DogProfile from '../DogProfile';
+import { base_url } from "../../services/variables";
 
 class MyDog extends React.Component {
   state = {
@@ -17,7 +18,7 @@ class MyDog extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/profile-dog').then((response) => {
+    axios.get(`${base_url}/profile-dog`).then((response) => {
       const { data } = response;
 
       this.setState({
