@@ -120,7 +120,7 @@ class MatchDogs extends Component {
           title="Yay! I'ts a Match"
           text="You can now contact the dog's owner to arrange a meeting"
           label="Get in touch"
-          action="" //que se vaya a la vista de match
+          //action="" que se vaya a la vista de match
         />
         <h1 className="uk-margin-medium-top uk-text-bold uk-text-primary uk-text-center">
           Match a dog
