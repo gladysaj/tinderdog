@@ -11,10 +11,8 @@ class MyMatches extends Component {
   componentDidMount() {
     getMyDog()
       .then((res) => {
-        console.log(res);
         getMatches(res.data.dogs[0]._id)
           .then((res) => {
-            console.log(res);
             const { result } = res.data;
             this.setState({ matches: result.match });
           })

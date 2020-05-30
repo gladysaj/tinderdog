@@ -15,6 +15,5 @@ export const getFosterDogs = () => {
 }
 
 export const updateUser = (params) => {
-    console.log("parametross--------------",params)
-      return axios.post(`${base_url}/user-update/${params._id}`, params)
-  }  
+    return axios.post(`${base_url}/user-update/${params._id}`, params)
+}

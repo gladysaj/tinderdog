@@ -14,7 +14,6 @@ class CreateDogForm extends Component {
   handleChange = (e) => {
     let { dog } = this.state;
     dog = { ...dog, [e.target.name]: e.target.value };
-    console.log(dog, e.target.name);
     this.setState({ dog });
   };
 

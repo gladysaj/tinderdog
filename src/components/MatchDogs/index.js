@@ -58,7 +58,6 @@ class MatchDogs extends Component {
 
     if (randomDog.match.find((item) => item === myDog._id)) {
       this.handleNewDog();
-      console.log("me ejecuto si tengo match");
       return true;
     }
 
@@ -94,8 +93,6 @@ class MatchDogs extends Component {
           }).then((result) => {
             this.props.history.push("/my-matches");
           });
-          // Agregar alerta de que hubo match
-          console.log(res);
         })
         .catch((err) => console.log(err));
     } else {
@@ -109,18 +106,13 @@ class MatchDogs extends Component {
           myDog = res.data.dog;
           this.handleNewDog();
           this.setState({ myDog });
-
-          // Agregar alerta de que likeaste
-          console.log(res);
         })
         .catch((err) => console.log(err));
-      console.log("me gusta");
     }
   };
 
   render() {
     const { dog } = this.state;
-    console.log(dog);
     return (
       <section>
         <Modal
