@@ -14,19 +14,20 @@ class MatchDogs extends Component {
     data: [],
     randomDogId: "",
     dogsShown: [],
-    previousDog: undefined,
   };
 
   componentDidMount() {
     getMatchDogs().then((res) => {
       let randomDog = res.data[Math.floor(Math.random() * res.data.length)];
 
+      const currentCard = <DogCard {...randomDog} />;
+
       this.setState({
+        currentCard,
         dog: randomDog,
         data: res.data,
         dogsShown: res.data,
         gender: res.data,
-        previousDog: randomDog._id,
       });
     });
 
@@ -53,20 +54,10 @@ class MatchDogs extends Component {
   }
 
   handleNewDog = () => {
-    let { myDog, previousDog } = this.state;
-
-    let newDog = false;
-    let randomDog = undefined;
-
-    while (!newDog) {
-      randomDog = this.state.dogsShown[
-        Math.floor(Math.random() * this.state.dogsShown.length)
-      ];
-      if (randomDog._id !== previousDog) {
-        newDog = true;
-        this.setState({ previousDog: randomDog._id });
-      }
-    }
+    let { myDog } = this.state;
+    let randomDog = this.state.dogsShown[
+      Math.floor(Math.random() * this.state.dogsShown.length)
+    ];
 
     if (randomDog.match.find((item) => item === myDog._id)) {
       this.handleNewDog();
@@ -77,7 +68,9 @@ class MatchDogs extends Component {
       (dog) => dog._id !== randomDog._id
     );
 
-    this.setState({ dog: randomDog, dogShown: filter });
+    const currentCard = <DogCard key={Math.random()} {...randomDog} />;
+
+    this.setState({ dog: randomDog, dogShown: filter, currentCard });
   };
 
   handleLike = () => {
@@ -124,7 +117,6 @@ class MatchDogs extends Component {
   };
 
   render() {
-    const { dog } = this.state;
     return (
       <section>
         <Modal
@@ -140,10 +132,7 @@ class MatchDogs extends Component {
         <p className="uk-text-center">Find the ideal match for your dog</p>
 
         <div className="card-container uk-margin-large-bottom">
-          <DogCard
-            {...dog}
-            gender={this.state.dog.gender === "Female" ? "♀" : "♂"}
-          />
+          {this.state.currentCard}
 
           <div className="uk-button-group floating-group uk-position-bottom-center">
             <FloatingAction icon="refresh" action={this.handleNewDog} />
