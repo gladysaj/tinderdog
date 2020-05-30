@@ -28,7 +28,7 @@ class MyMatches extends Component {
       <div>
         <SubNavbar />
         <section>
-          <div className="">
+          <div>
             {this.state.matches.length > 0 ? (
               <div>
                 {this.state.matches.map((match, index) => (
