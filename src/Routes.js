@@ -11,6 +11,8 @@ import EditProfile from "./components/Profile/EditProfile"
 import MyDog from "./components/Profile/MyDog"
 import CreateDogForm from "./components/CreateDogForm";
 import LandingPage from "./components/LandingPage";
+// import Profile from "./components/Profile/index"
+import MyMatches from "./components/Profile/MyMatches";
 
 // wrap the `spring` helper to use a bouncy config
 function bounce(val) {
@@ -46,12 +48,8 @@ const Routes = () => (
         <EditProfile />
       </div>
     )} />
-    <Route exact path="/profile/dog" component={() => (
-      <div>
-        <SubNavbar />
-        <MyDog />
-      </div>
-    )} />
+    <Route exact path="/my-dog" component={MyDog} />
+    <Route exact path="/my-matches" component={MyMatches} />
     <Route exact path="/create-dog" component= {CreateDogForm}/>
   </AnimatedSwitch>
 );

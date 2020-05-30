@@ -1,10 +1,5 @@
-// import axios from "axios";
 import { base_url } from "./variables"; // <--- ⚠️ all routes should now use base url instead of localhost
 
-// //No funciona
-// export const getLikes = () => {
-//     return axios.get("http://localhost:3000/likes")
-// }
 
 import axios from 'axios';
 
@@ -12,9 +7,14 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 export const getUser = () => {
-    return axios.get("http://localhost:3000/api/match")
+    return axios.get(`${base_url}/match`)
 }
 
 export const getFosterDogs = () => {
-    return axios.get("http://localhost:3000/api/foster")
+    return axios.get(`${base_url}/foster`)
 }
+
+export const updateUser = (params) => {
+    console.log("parametross--------------",params)
+      return axios.post(`${base_url}/user-update/${params._id}`, params)
+  }  
