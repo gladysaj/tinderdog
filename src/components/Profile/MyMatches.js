@@ -22,10 +22,8 @@ class MyMatches extends Component {
               axios.post(`${base_url}/owner`, {
                 owner: match.owner
               }).then(result => {
-                console.log(result);
                 if (result.data && result.data.name && result.data.phoneNumber) {
                   const { name, phoneNumber } = result.data;
-                  console.log('match', match);
                   this.setState(prevState => {
                     const newMatch = { ...match, ownerName: name, ownerPhone: phoneNumber };
                     return {
@@ -52,7 +50,6 @@ class MyMatches extends Component {
   render() {
     return (
       <div>
-      {console.log(this.state.matches)}
         <SubNavbar />
         <section>
           <div>
