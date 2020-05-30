@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <AppContext.Provider value={{ ...state, setUser, logout }}>
         <div className="App">
-          <NavBar user={state.user} logout={logout} />
+          <NavBar user={state.user} logout={logout} location={this.props.location} />
           <Routes />
         </div>
       </AppContext.Provider>

@@ -27,10 +27,10 @@ class EditProfile extends Component {
     console.log("este es mi usuario", user);
     updateUser(user)
       .then((res) => {
-        const { user } = res.data;
-        localStorage.setItem("user", JSON.stringify(user));
-        this.context.setUser(user);
-        console.log("user successfully updated!");
+        const { result } = res.data;
+        localStorage.setItem("user", JSON.stringify(result));
+        this.context.setUser(result);
+        console.log("user successfully updated!", res);
 
         //usuario esta actualizado (feedback)
         //tenemos que usar la funcion setUser del context para actualizar el usuario en el context

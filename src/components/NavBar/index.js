@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
-const NavBar = ({ user, logout }) => {
+const NavBar = ({ user, logout, location }) => {
+  const isLogin = location.pathname === "/login"; 
   return (
     <header>
       <nav
@@ -23,7 +24,7 @@ const NavBar = ({ user, logout }) => {
           <div className="uk-navbar-left">
             <ul className="uk-navbar-nav">
               <li className="uk-active">
-                <Link to="/landing" className="uk-logo">
+                <Link to="/login" className="uk-logo">
                 <img src={logo} alt="Waggy's App" />
                 </Link>
               </li>

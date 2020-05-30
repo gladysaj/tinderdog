@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DogCard from "../DogCard";
-import {getMatches} from "../../services/dogService" //ESTOY USANDO ESTE SERVICIO COMO PRUEBA PORQUE NO SIRVE MATCH
+import { getMatches, getMyDog } from "../../services/dogService"; //ESTOY USANDO ESTE SERVICIO COMO PRUEBA PORQUE NO SIRVE MATCH
 import SubNavbar from "./SubNavbar";
 
 class MyMatches extends Component {
@@ -9,21 +9,30 @@ class MyMatches extends Component {
   };
 
   componentDidMount() {
-    getMatches().then((res) => {
-      console.log(res);
-      
-    });
+    getMyDog()
+      .then((res) => {
+        console.log(res);
+        getMatches(res.data.dogs[0]._id)
+          .then((res) => {
+            console.log(res);
+            const { result } = res.data;
+            this.setState({ matches: result.match })
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+
   }
 
   render() {
     return (
       <div>
         <SubNavbar />
-        <section className="uk-section">
-          <div className="uk-container">
-            <div className="uk-grid">
+        <section >
+          <div className="uk-flex uk-flex-between">
+            <div >
               {this.state.matches.length > 0 ? (
-                <div className="uk-grid">
+                <div>
                   {this.state.matches.map((match, index) => (
                     <DogCard key={index} {...match} />
                   ))}
