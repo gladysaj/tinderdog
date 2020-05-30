@@ -34,9 +34,9 @@ class MyDog extends React.Component {
     });
   }
 
+
   showDog() {
     const { hasDog } = this.state;
-
     if (hasDog === true) {
       return (
         <DogProfile

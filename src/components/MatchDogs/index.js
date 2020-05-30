@@ -4,6 +4,8 @@ import Modal from "../Modal";
 import DogCard from "../DogCard";
 import FloatingAction from "../FloatingAction";
 import { getOwnerDogs } from "../../services/userService";
+import Swal from 'sweetalert2';
+import { withRouter } from 'react-router';
 
 class MatchDogs extends Component {
   state = {
@@ -85,7 +87,13 @@ class MatchDogs extends Component {
           myDog = res.data.dog;
           this.handleNewDog();
           this.setState({ myDog });
-
+          Swal.fire({
+            title: "Yay! It's a match!",
+            text: "Checkout your matches.",
+            confirmButtonText: "Matches",
+          }).then((result) => {
+            this.props.history.push("/my-matches");
+          });
           // Agregar alerta de que hubo match
           console.log(res);
         })
@@ -140,6 +148,9 @@ class MatchDogs extends Component {
               action={this.handleLike}
               // toggle="target: #modal-success"
             />
+            <div>
+              {}
+            </div>
           </div>
         </div>
       </section>
@@ -147,4 +158,4 @@ class MatchDogs extends Component {
   }
 }
 
-export default MatchDogs;
+export default withRouter(MatchDogs);
