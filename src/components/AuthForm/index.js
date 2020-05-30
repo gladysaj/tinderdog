@@ -31,7 +31,7 @@ class AuthForm extends Component {
     const { user } = this.state;
     const action = isLogin ? login : signup;
     const { history } = this.props;
-    const nextRoute = isLogin ? "/" : "login";
+    const nextRoute = isLogin ? "/home" : "login";
     action(user)
       .then((res) => {
         if (isLogin) {
