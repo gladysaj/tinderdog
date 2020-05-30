@@ -25,17 +25,16 @@ class MyMatches extends Component {
                 console.log(result);
                 if (result.data && result.data.name && result.data.phoneNumber) {
                   const { name, phoneNumber } = result.data;
+                  console.log('match', match);
                   this.setState(prevState => {
                     return {
-                      ...prevState,
-                      matches: [{ ...match, ownerName: name, ownerPhone: phoneNumber }]
+                      matches: [{ ...prevState.matches, ...match, ownerName: name, ownerPhone: phoneNumber }]
                     }
                   });
                 } else {
                   this.setState(prevState => {
                     return {
-                      ...prevState,
-                      matches: [{ ...match }]
+                      matches: [{ ...prevState.matches, ...match }]
                     }
                   });
                 }
@@ -52,6 +51,7 @@ class MyMatches extends Component {
   render() {
     return (
       <div>
+      {console.log(this.state.matches)}
         <SubNavbar />
         <section>
           <div>
