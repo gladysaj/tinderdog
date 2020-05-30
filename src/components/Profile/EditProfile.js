@@ -49,8 +49,11 @@ class EditProfile extends Component {
           phoneNumber={user.phoneNumber}
           description={user.description}
         />
-        <div className="uk-column-1-2 uk-column-divider">
-          <form onSubmit={this.handleSubmit} className="uk-form-stacked ">
+        <div className="uk-width-1-4@l uk-width-1-4@m uk-width-1-2@s uk-align-center">
+          <form
+            onSubmit={this.handleSubmit}
+            className="uk-width-1-1 uk-form-stacked uk-flex uk-flex-center uk-flex-column"
+          >
             <div className="uk-inline">
               <label className="uk-form-label" htmlFor="avatar">
                 Profile picture:
@@ -71,7 +74,7 @@ class EditProfile extends Component {
                 />
               </div>
             </div>
-            <div className="uk-padding-small">
+            <div className="uk-margin-small">
               <label className="uk-form-label" htmlFor="name">
                 Name:
               </label>
@@ -92,7 +95,7 @@ class EditProfile extends Component {
                 />
               </div>
             </div>
-            <div className="uk-padding-small">
+            <div className="uk-margin-small">
               <label className="uk-form-label" htmlFor="phoneNumber">
                 Phone number:
               </label>
@@ -115,7 +118,7 @@ class EditProfile extends Component {
                 />
               </div>
             </div>
-            <div className="uk-padding-small">
+            <div className="uk-margin-small">
               <label className="uk-form-label" htmlFor="description">
                 Description:
               </label>
@@ -138,11 +141,10 @@ class EditProfile extends Component {
                 />
               </div>
             </div>
-            <div className="uk-column-span uk-padding-large">
-              <button className="uk-button uk-button-primary uk-width-1-4">
-                Update
-              </button>
-            </div>
+
+            <button className="uk-button uk-button-primary uk-margin-medium">
+              Update
+            </button>
           </form>
         </div>
       </div>
